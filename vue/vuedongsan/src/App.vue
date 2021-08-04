@@ -8,7 +8,7 @@
   <div v-for="product in products" :key="product">
     <p>{{ product.name }}</p>
     <p>{{ product.price }}</p>
-    <button @click="product.scam += 1">⚠허위매물신고⚠</button>
+    <button @click="increase(product)">⚠허위매물신고⚠</button>
     <span>신고수 : {{ product.scam }}</span>
   </div>
 </template>
@@ -27,6 +27,11 @@ export default {
     };
   },
   components: {},
+  methods: {
+    increase(obj) {
+      return obj.scam++
+    }
+  }
 };
 </script>
 
