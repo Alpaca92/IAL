@@ -11,12 +11,13 @@
     <p>{{ product.price }}</p>
     <button @click="increase(product)">⚠허위매물신고⚠</button>
     <span>신고수 : {{ product.scam }}</span>
-    <div v-if="product.modalToShow" class="black-bg" @click="product.modalToShow = !product.modalToShow">
+    <div v-if="product.modalToShow" class="black-bg">
       <div class="modal white-bg">
-        모달임 ㄹㅇ ㅋㅋ
+        <button @click="modalController(product)">❌</button>
+        <p>모달임 ㄹㅇ ㅋㅋ</p>
       </div>
     </div>
-    <button @click="product.modalToShow = !product.modalToShow">모달 보이게해줘</button>
+    <button @click="modalController(product)">모달 보이게해줘</button>
   </div>
 </template>
 
@@ -37,6 +38,11 @@ export default {
   methods: {
     increase(obj) {
       return obj.scam++
+    },
+    modalController(obj) {
+      console.log(obj)
+
+      return obj.modalToShow = !obj.modalToShow
     }
   }
 };
