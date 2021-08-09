@@ -1,50 +1,34 @@
 <template>
-  <div class="menu">
-    <a v-for="gnb in gnbs" :key="gnb">
-      {{ gnb }}
-    </a>
-  </div>
-
-  <div v-for="product in products" :key="product">
-    <img :src="product.imgUrl" alt="" class="room-img">
-    <p>{{ product.name }}</p>
-    <p>{{ product.price }}</p>
-    <button @click="increase(product)">⚠허위매물신고⚠</button>
-    <span>신고수 : {{ product.scam }}</span>
-    <div v-if="product.modalToShow" class="black-bg">
-      <div class="modal white-bg">
-        <button @click="modalController(product)">❌</button>
-        <p>모달임 ㄹㅇ ㅋㅋ</p>
-      </div>
+  <div>
+    <div class="menu">
+      <a v-for="gnb in gnbs" :key="gnb">
+        {{ gnb }}
+      </a>
     </div>
-    <button @click="modalController(product)">모달 보이게해줘</button>
+    <div v-for="product in products" :key="product.id">
+      <img :src="product.image" alt="" style="width: 100%;">
+      <h4>
+        name : {{ product.title }}
+      </h4>
+      <p>
+        price : {{ product.price }}원
+      </p>
+    </div>
   </div>
 </template>
 
 <script>
+import roomDatas from "./data/post.js";
+
 export default {
   name: "App",
   data() {
     return {
       gnbs: ["Home", "Products", "About"],
-      products: [
-        { name: "역삼동 원룸", price: 20, scam:0, imgUrl: require("./assets/room0.jpg"), modalToShow: false },
-        { name: "역사동 원룸", price: 201, scam:0, imgUrl: require("./assets/room1.jpg"), modalToShow: false },
-        { name: "역오동 원룸", price: 203, scam:0, imgUrl: require("./assets/room2.jpg"), modalToShow: false },
-      ],
+      products: roomDatas,
     };
   },
   components: {},
-  methods: {
-    increase(obj) {
-      return obj.scam++
-    },
-    modalController(obj) {
-      console.log(obj)
-
-      return obj.modalToShow = !obj.modalToShow
-    }
-  }
 };
 </script>
 
