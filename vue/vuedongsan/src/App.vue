@@ -16,8 +16,10 @@
     </div>
     <div class="modal black-bg" v-if="showModal">
       <div class="inner_modal white-bg">
-        <h4> {{ productIndex }} 모달 타이틀임</h4>
-        <p> {{ productIndex }} 모달 내용임</p>
+        <h4>{{ products[productIndex].title }}</h4>
+        <img :src="products[productIndex].image" alt="" style="width: 100%">
+        <p>설명<br>{{ products[productIndex].content }}</p>
+        <p>가격 : {{ products[productIndex].price }}원</p>
         <button @click="showModal = false">❌</button>
       </div>
     </div>
