@@ -7,12 +7,19 @@
     </div>
     <div v-for="product in products" :key="product.id">
       <img :src="product.image" alt="" style="width: 100%;">
-      <h4>
+      <h4 class="title" @click="handleClick(product.id)">
         name : {{ product.title }}
       </h4>
       <p>
         price : {{ product.price }}원
       </p>
+    </div>
+    <div class="modal black-bg" v-if="showModal">
+      <div class="inner_modal white-bg">
+        <h4> {{ productIndex }} 모달 타이틀임</h4>
+        <p> {{ productIndex }} 모달 내용임</p>
+        <button @click="showModal = false">❌</button>
+      </div>
     </div>
   </div>
 </template>
@@ -26,9 +33,17 @@ export default {
     return {
       gnbs: ["Home", "Products", "About"],
       products: roomDatas,
+      showModal: false,
+      productIndex: 0
     };
   },
   components: {},
+  methods: {
+    handleClick(productId) {
+      this.showModal = true
+      this.productIndex = productId
+    }
+  }
 };
 </script>
 
@@ -55,6 +70,10 @@ export default {
 .room-img {
   width: 100%;
   margin-top: 40px;
+}
+
+.title {
+  cursor: pointer;
 }
 
 .black-bg {
