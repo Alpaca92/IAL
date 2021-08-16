@@ -6,28 +6,22 @@
       </a>
     </div>
     <div v-for="product in products" :key="product.id">
-      <img :src="product.image" alt="" style="width: 100%;">
+      <img :src="product.image" alt="" style="width: 100%;" />
       <h4 class="title" @click="handleClick(product.id)">
         name : {{ product.title }}
       </h4>
-      <p>
-        price : {{ product.price }}원
-      </p>
+      <p>price : {{ product.price }}원</p>
     </div>
-    <div class="modal black-bg" v-if="showModal">
-      <div class="inner_modal white-bg">
-        <h4>{{ products[productIndex].title }}</h4>
-        <img :src="products[productIndex].image" alt="" style="width: 100%">
-        <p>설명<br>{{ products[productIndex].content }}</p>
-        <p>가격 : {{ products[productIndex].price }}원</p>
-        <button @click="showModal = false">❌</button>
-      </div>
-    </div>
+    <Modal :products="products" :showModal="showModal" :productIndex="productIndex">
+      <Discount></Discount>
+    </Modal>
   </div>
 </template>
 
 <script>
-import roomDatas from "./data/post.js";
+import roomDatas from "./data/post";
+import Discount from "./components/Discount";
+import Modal from "./components/Modal";
 
 export default {
   name: "App",
@@ -36,16 +30,19 @@ export default {
       gnbs: ["Home", "Products", "About"],
       products: roomDatas,
       showModal: false,
-      productIndex: 0
+      productIndex: 0,
     };
   },
-  components: {},
+  components: {
+    Discount,
+    Modal,
+  },
   methods: {
     handleClick(productId) {
-      this.showModal = true
-      this.productIndex = productId
-    }
-  }
+      this.showModal = true;
+      this.productIndex = productId;
+    },
+  },
 };
 </script>
 
