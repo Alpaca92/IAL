@@ -5,6 +5,8 @@
         {{ gnb }}
       </a>
     </div>
+    <button class="sort-btn btn" @click="priceSort">낮은 가격 순 정렬</button>
+    <button class="sortback-btn btn" @click="sortBack">처음 순서로 정렬</button>
     <Card
       :product="product"
       v-for="product in products"
@@ -34,6 +36,7 @@ export default {
   data() {
     return {
       gnbs: ["Home", "Products", "About"],
+      originalProducts: [...roomDatas],
       products: roomDatas,
       showModal: false,
       productIndex: 0,
@@ -43,7 +46,16 @@ export default {
     Card,
     Modal,
   },
-  methods: {},
+  methods: {
+    priceSort() {
+      this.products.sort((a, b) => {
+        return a.price - b.price
+      })
+    },
+    sortBack() {
+      this.products = [...this.originalProducts]
+    },
+  },
 };
 </script>
 
@@ -93,5 +105,9 @@ export default {
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
+}
+
+.btn {
+  margin: 20px 10px;
 }
 </style>
