@@ -1,23 +1,29 @@
 <template>
   <div class="modal black-bg" v-if="showModal">
     <div class="inner_modal white-bg">
+      <Discount></Discount>
       <h4>{{ products[productIndex].title }}</h4>
       <img :src="products[productIndex].image" alt="" style="width: 100%" />
       <p>설명<br />{{ products[productIndex].content }}</p>
       <p>가격 : {{ products[productIndex].price }}원</p>
-      <!-- <button @click="showModal = false">❌</button> -->
+      <button @click="$emit('close-modal')">❌</button>
     </div>
   </div>
 </template>
 
 <script>
+import Discount from "./Discount.vue";
+
 export default {
   name: "Modal",
   props: {
     products: Array,
     productIndex: Number,
-    showModal: Boolean
-  }
+    showModal: Boolean,
+  },
+  components: {
+    Discount,
+  },
 };
 </script>
 

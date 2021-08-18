@@ -5,22 +5,28 @@
         {{ gnb }}
       </a>
     </div>
-    <div v-for="product in products" :key="product.id">
-      <img :src="product.image" alt="" style="width: 100%;" />
-      <h4 class="title" @click="handleClick(product.id)">
-        name : {{ product.title }}
-      </h4>
-      <p>price : {{ product.price }}원</p>
-    </div>
-    <Modal :products="products" :showModal="showModal" :productIndex="productIndex">
-      <Discount></Discount>
+    <Card
+      :product="product"
+      v-for="product in products"
+      :key="product.id"
+      @open-modal="
+        showModal = true;
+        productIndex = $event;
+      "
+    ></Card>
+    <Modal
+      :products="products"
+      :showModal="showModal"
+      :productIndex="productIndex"
+      @close-modal="showModal = false"
+    >
     </Modal>
   </div>
 </template>
 
 <script>
 import roomDatas from "./data/post";
-import Discount from "./components/Discount";
+import Card from "./components/Card";
 import Modal from "./components/Modal";
 
 export default {
@@ -34,15 +40,10 @@ export default {
     };
   },
   components: {
-    Discount,
+    Card,
     Modal,
   },
-  methods: {
-    handleClick(productId) {
-      this.showModal = true;
-      this.productIndex = productId;
-    },
-  },
+  methods: {},
 };
 </script>
 
