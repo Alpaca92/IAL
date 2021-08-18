@@ -5,7 +5,8 @@
       <h4>{{ products[productIndex].title }}</h4>
       <img :src="products[productIndex].image" alt="" style="width: 100%" />
       <p>설명<br />{{ products[productIndex].content }}</p>
-      <p>가격 : {{ products[productIndex].price }}원</p>
+      <p>가격 : {{ months * products[productIndex].price }}원</p>
+      <input placeholder="개월수를 입력하세요" v-model.number="months">
       <button @click="$emit('close-modal')">❌</button>
     </div>
   </div>
@@ -24,6 +25,20 @@ export default {
   components: {
     Discount,
   },
+  data() {
+    return {
+      months: 1,
+    }
+  },
+  watch: {
+    months(val) {
+      if (typeof(val) !== 'number') {
+        alert('최솟값은 1개월입니다.')
+
+        return this.months = 1
+      }
+    }
+  }
 };
 </script>
 
@@ -45,5 +60,10 @@ export default {
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
+}
+
+input {
+  display: block;
+  margin: 0 auto;
 }
 </style>
