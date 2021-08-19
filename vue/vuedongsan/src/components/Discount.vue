@@ -9,17 +9,22 @@ export default {
   name: "Discount",
   data() {
     return {
-      discountRate : 20
-    }
-  }
+      discountRate: 20,
+    };
+  },
+  mounted() {
+    setInterval(() => {
+      this.discountRate -= 1;
+    }, 1000);
+  },
 };
 </script>
 
 <style>
-  .no-discount {
-    background: #eee;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-  }
+.no-discount {
+  background: #eee;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
 </style>

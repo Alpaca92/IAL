@@ -6,7 +6,7 @@
       <img :src="products[productIndex].image" alt="" style="width: 100%" />
       <p>설명<br />{{ products[productIndex].content }}</p>
       <p>가격 : {{ months * products[productIndex].price }}원</p>
-      <input placeholder="개월수를 입력하세요" v-model.number="months">
+      <input placeholder="개월수를 입력하세요" v-model.number="months" />
       <button @click="$emit('close-modal')">❌</button>
     </div>
   </div>
@@ -27,18 +27,24 @@ export default {
   },
   data() {
     return {
-      months: 1,
-    }
+      months: 3,
+    };
   },
   watch: {
     months(val) {
-      if (typeof(val) !== 'number') {
-        alert('최솟값은 1개월입니다.')
+      if (typeof val !== "number") {
+        alert("숫자를 입력해주세요.");
 
-        return this.months = 1
+        return (this.months = 3);
       }
+    },
+  },
+  beforeUpdate() {
+    if (this.months <= 2) {
+      alert("최소 3개월 이상 빌려야 합니다.");
+      this.months = 3;
     }
-  }
+  },
 };
 </script>
 
