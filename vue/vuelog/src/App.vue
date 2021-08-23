@@ -1,0 +1,33 @@
+<template>
+  <div>
+    <Header></Header>
+    <router-view :blog="blog"></router-view>
+  </div>
+</template>
+
+<script>
+import Header from './components/Header.vue'
+import blog from './assets/blog'
+
+export default {
+  name: 'App',
+  components: {
+    Header,
+  },
+  data() {
+    return {
+      blog: blog
+    }
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+</style>
