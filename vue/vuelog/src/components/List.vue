@@ -1,8 +1,6 @@
 <template>
   <div class="post" v-for="post in blog" :key="post.number">
-    <h5 class="post__title">{{ post.title }}</h5>
-    <time class="post__date">{{ post.date }}</time>
-    <p class="post__content">{{ post.content }}</p>
+    <router-link :to="{ name: 'Detail', params: { id: post.number }}" class="post__title">{{ post.title }}</router-link>
   </div>
 </template>
 
@@ -16,20 +14,14 @@ export default {
 </script>
 
 <style>
-.post {
-  padding: 20px;
-}
+  .post {
+    padding: 20px;
+  }
 
-.post__title {
-  font-weight: 700;
-}
-
-.post__date {
-  font-size: 12px;
-}
-
-.post__content {
-  margin-top: 15px;
-  font-size: 14px;
-}
+  .post__title {
+    font-weight: 700;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
 </style>

@@ -12,6 +12,11 @@ const routes = [
     path: '/list',
     name: 'List',
     component: load('List')
+  },
+  {
+    path: '/detail/:id',
+    name: 'Detail',
+    component: load('Detail')
   }
 ];
 
