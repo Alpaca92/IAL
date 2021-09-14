@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <Post :postDatas="postDatas" />
+  <div v-for="postData in postDatas" :key="postData">
+    <Post :postData="postData" />
   </div>
 </template>
 
 <script>
-import Post from './Post.vue'
+import Post from "./Post.vue";
 
 export default {
   name: "Container",
@@ -14,7 +14,7 @@ export default {
   },
   props: {
     postDatas: Array,
-  }
+  },
 };
 </script>
 

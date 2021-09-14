@@ -1,10 +1,10 @@
 <template>
-  <div class="post" v-for="postData in postDatas" :key="postData">
+  <div class="post">
     <div class="post-header">
-      <div class="profile"></div>
+      <div class="profile" :style="{ backgroundImage: `url(${postData.userImage})`}"></div>
       <span class="profile-name"> {{ postData.name }} </span>
     </div>
-    <div class="post-body"></div>
+    <div class="post-body" :style="{ backgroundImage: `url(${postData.postImage})` }"></div>
     <div class="post-content">
       <p>{{ postData.likes }} Likes</p>
       <p>
@@ -19,7 +19,7 @@
 export default {
   name: "Post",
   props: {
-    postDatas: Array,
+    postData: Object,
   },
 };
 </script>
