@@ -1,6 +1,6 @@
 <template>
-  <div v-for="postData in postDatas" :key="postData">
-    <Post :postData="postData" />
+  <div>
+    <Post :postData="postData" v-for="postData in postDatas" :key="postData" />
   </div>
 </template>
 

@@ -10,6 +10,7 @@
   </div>
 
   <Container :postDatas="postDatas" />
+  <button style="margin-bottom: 40px" @click="more">more</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -17,11 +18,18 @@
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
+  <div>내용 0</div>
+  <div>내용 1</div>
+  <div>내용 2</div>
+  <button>버튼 0</button>
+  <button>버튼 1</button>
+  <button>버튼 2</button>
 </template>
 
 <script>
 import Container from "./components/Container.vue";
 import postDatas from "./assets/db";
+import axios from "axios";
 
 export default {
   name: "App",
@@ -31,7 +39,20 @@ export default {
   data() {
     return {
       postDatas,
+      clickedBtn: 0,
     };
+  },
+  methods: {
+    more() {
+      axios
+        .get(`https://codingapple1.github.io/vue/more${this.clickedBtn}.json`)
+        .then((result) => {
+          this.clickedBtn++;
+
+          return this.postDatas.push(result.data);
+        })
+        .catch((error) => console.log(`Error: ${error}`));
+    },
   },
 };
 </script>
