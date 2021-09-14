@@ -9,7 +9,7 @@
     <img src="./assets/alpaca.png" class="logo" />
   </div>
 
-  <Container :postDatas="postDatas" />
+  <Container :postDatas="postDatas" :step="step" />
   <button style="margin-bottom: 40px" @click="more">more</button>
 
   <div class="footer">
@@ -18,12 +18,16 @@
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
-  <div>내용 0</div>
-  <div>내용 1</div>
-  <div>내용 2</div>
-  <button>버튼 0</button>
-  <button>버튼 1</button>
-  <button>버튼 2</button>
+  <button @click="step = 0">btn 0</button>
+  <button @click="step = 1">btn 2</button>
+  <button @click="step = 2">btn 3</button>
+
+  <!-- <div v-if="showTapIndex === 0">내용 0</div>
+  <div v-if="showTapIndex === 1">내용 1</div>
+  <div v-if="showTapIndex === 2">내용 2</div>
+  <button @click="showTapIndex = 0">버튼 0</button>
+  <button @click="showTapIndex = 1">버튼 1</button>
+  <button @click="showTapIndex = 2">버튼 2</button> -->
 </template>
 
 <script>
@@ -40,6 +44,8 @@ export default {
     return {
       postDatas,
       clickedBtn: 0,
+      step: 0,
+      // showTapIndex: 0,
     };
   },
   methods: {
