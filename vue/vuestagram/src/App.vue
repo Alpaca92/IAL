@@ -4,12 +4,18 @@
       <li @click="step = 0">Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="step === 1" @click="step++">Next</li>
+      <li v-if="step === 2" @click="publish">Post</li>
     </ul>
     <img src="./assets/alpaca.png" class="logo" />
   </div>
 
-  <Container :postDatas="postDatas" :step="step" :imageUrl="imageUrl" />
+  <Container
+    @write="write = $event"
+    :postDatas="postDatas"
+    :step="step"
+    :imageUrl="imageUrl"
+  />
   <button style="margin-bottom: 40px" @click="more">more</button>
 
   <div class="footer">
@@ -54,6 +60,21 @@ export default {
 
       this.imageUrl = URL.createObjectURL(files[0]);
       this.step = 1;
+    },
+    publish() {
+      const newPost = {
+        name: "Kim Hyun",
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.imageUrl,
+        likes: 36,
+        date: "May 15",
+        liked: false,
+        content: this.write,
+        filter: "perpetua",
+      };
+
+      this.postDatas.unshift(newPost);
+      this.step = 0;
     },
   },
 };
