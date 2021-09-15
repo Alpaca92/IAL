@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <ul class="header-button-left">
-      <li>Cancel</li>
+      <li @click="step = 0">Cancel</li>
     </ul>
     <ul class="header-button-right">
       <li>Next</li>
@@ -9,25 +9,15 @@
     <img src="./assets/alpaca.png" class="logo" />
   </div>
 
-  <Container :postDatas="postDatas" :step="step" />
+  <Container :postDatas="postDatas" :step="step" :imageUrl="imageUrl" />
   <button style="margin-bottom: 40px" @click="more">more</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input type="file" @change="upload" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
-  <button @click="step = 0">btn 0</button>
-  <button @click="step = 1">btn 2</button>
-  <button @click="step = 2">btn 3</button>
-
-  <!-- <div v-if="showTapIndex === 0">내용 0</div>
-  <div v-if="showTapIndex === 1">내용 1</div>
-  <div v-if="showTapIndex === 2">내용 2</div>
-  <button @click="showTapIndex = 0">버튼 0</button>
-  <button @click="showTapIndex = 1">버튼 1</button>
-  <button @click="showTapIndex = 2">버튼 2</button> -->
 </template>
 
 <script>
@@ -45,7 +35,7 @@ export default {
       postDatas,
       clickedBtn: 0,
       step: 0,
-      // showTapIndex: 0,
+      imageUrl: null,
     };
   },
   methods: {
@@ -58,6 +48,12 @@ export default {
           return this.postDatas.push(result.data);
         })
         .catch((error) => console.log(`Error: ${error}`));
+    },
+    upload(event) {
+      const files = event.target.files;
+
+      this.imageUrl = URL.createObjectURL(files[0]);
+      this.step = 1;
     },
   },
 };
