@@ -10,21 +10,36 @@
 
     <!-- 필터선택페이지 -->
     <div v-if="step === 1">
-      <div class="upload-image" :style="`background-image: url(${imageUrl})`"></div>
+      <div
+        class="upload-image"
+        :style="`background-image: url(${imageUrl})`"
+      ></div>
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <FilterBox
+          :imageUrl="imageUrl"
+          class="filter-1"
+          v-for="filter in filters"
+          :key="filter"
+          :class="filter"
+        >
+        {{ filter }}
+        </FilterBox>
       </div>
     </div>
 
     <!-- 글작성페이지 -->
     <div v-if="step === 2">
-      <div class="upload-image" :style="`background-image: url(${imageUrl})`"></div>
+      <div
+        class="upload-image"
+        :style="`background-image: url(${imageUrl})`"
+      ></div>
       <div class="write">
-        <textarea class="write-box" @input="$emit('write', $event.target.value)">write!</textarea>
+        <textarea
+          class="write-box"
+          @input="$emit('write', $event.target.value)"
+        >
+          write!
+        </textarea>
       </div>
     </div>
   </div>
@@ -32,16 +47,50 @@
 
 <script>
 import Post from "./Post.vue";
+import FilterBox from "./FilterBox.vue";
 
 export default {
   name: "Container",
   components: {
     Post,
+    FilterBox,
   },
   props: {
     postDatas: Array,
     step: Number,
     imageUrl: String,
+  },
+  data() {
+    return {
+      filters: [
+        "aden",
+        "_1977",
+        "brannan",
+        "brooklyn",
+        "clarendon",
+        "earlybird",
+        "gingham",
+        "hudson",
+        "inkwell",
+        "kelvin",
+        "lark",
+        "lofi",
+        "maven",
+        "mayfair",
+        "moon",
+        "nashville",
+        "perpetua",
+        "reyes",
+        "rise",
+        "slumber",
+        "stinson",
+        "toaster",
+        "valencia",
+        "walden",
+        "willow",
+        "xpro2",
+      ],
+    };
   },
 };
 </script>

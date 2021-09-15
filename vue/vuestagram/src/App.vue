@@ -16,10 +16,10 @@
     :step="step"
     :imageUrl="imageUrl"
   />
-  <button style="margin-bottom: 40px" @click="more">more</button>
+  <button v-if="step === 0" style="margin-bottom: 40px" @click="more">more</button>
 
   <div class="footer">
-    <ul class="footer-button-plus">
+    <ul v-if="step === 0" class="footer-button-plus">
       <input type="file" @change="upload" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
     </ul>
