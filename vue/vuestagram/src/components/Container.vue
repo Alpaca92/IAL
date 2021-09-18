@@ -3,8 +3,9 @@
     <div v-if="step === 0">
       <Post
         :postData="postData"
-        v-for="postData in postDatas"
+        v-for="(postData, idx) in postDatas"
         :key="postData"
+        :like="$store.state.likes[idx]"
       />
     </div>
 

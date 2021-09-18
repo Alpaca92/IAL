@@ -1,12 +1,20 @@
 <template>
   <div class="post">
     <div class="post-header">
-      <div class="profile" :style="{ backgroundImage: `url(${postData.userImage})`}"></div>
+      <div
+        class="profile"
+        :style="{ backgroundImage: `url(${postData.userImage})` }"
+      ></div>
       <span class="profile-name"> {{ postData.name }} </span>
     </div>
-    <div class="post-body" :class="postData.filter" :style="{ backgroundImage: `url(${postData.postImage})` }"></div>
+    <div
+      class="post-body"
+      :class="postData.filter"
+      :style="{ backgroundImage: `url(${postData.postImage})` }"
+      @lclick="clickPost"
+    ></div>
     <div class="post-content">
-      <p>{{ postData.likes }} Likes</p>
+      <p>{{ like }} Likes</p>
       <p>
         <strong> {{ postData.name }} </strong> {{ postData.content }}
       </p>
@@ -20,6 +28,21 @@ export default {
   name: "Post",
   props: {
     postData: Object,
+    like: Number,
+  },
+  data() {
+    return {
+      isLikeClicked: false,
+    };
+  },
+  methods: {
+    clickPost() {
+      if (!this.isLikeClicked) {
+        this.$store.commit("increaseLike", this.isLikeClicked);
+      } else {
+        this.$store.commit("increaseLike", !this.isLikeClicked);
+      }
+    },
   },
 };
 </script>

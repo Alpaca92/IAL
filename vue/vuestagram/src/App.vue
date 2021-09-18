@@ -8,8 +8,6 @@
       <li v-if="step === 2" @click="publish">Post</li>
     </ul>
     <img src="./assets/alpaca.png" class="logo" />
-    <h4>my age: {{ $store.state.age }}</h4>
-    <button @click="$store.commit('increaseAge', 10)">btn</button>
   </div>
 
   <Container
@@ -19,7 +17,8 @@
     :imageUrl="imageUrl"
     :selectedFilter="selectedFilter"
   />
-  <button v-if="step === 0" style="margin-bottom: 40px" @click="more">
+  <p> {{ $store.state.more }} </p>
+  <button v-if="step === 0" style="margin-bottom: 40px" @click="$store.dispatch('getData')">
     more
   </button>
 
@@ -34,7 +33,6 @@
 <script>
 import Container from "./components/Container.vue";
 import postDatas from "./assets/db";
-import axios from "axios";
 
 export default {
   name: "App",
@@ -51,16 +49,16 @@ export default {
     };
   },
   methods: {
-    more() {
-      axios
-        .get(`https://codingapple1.github.io/vue/more${this.clickedBtn}.json`)
-        .then((result) => {
-          this.clickedBtn++;
+    // more() {
+    //   axios
+    //     .get(`https://codingapple1.github.io/vue/more${this.clickedBtn}.json`)
+    //     .then((result) => {
+    //       this.clickedBtn++;
 
-          return this.postDatas.push(result.data);
-        })
-        .catch((error) => console.log(`Error: ${error}`));
-    },
+    //       return this.postDatas.push(result.data);
+    //     })
+    //     .catch((error) => console.log(`Error: ${error}`));
+    // },
     upload(event) {
       const files = event.target.files;
 
