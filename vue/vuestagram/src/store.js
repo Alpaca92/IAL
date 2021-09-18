@@ -6,6 +6,8 @@ const store = createStore({
     return {
       likes: [0, 1, 2],
       more: {},
+      name: 'kim',
+      age: 12
     };
   },
   mutations: {

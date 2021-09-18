@@ -17,10 +17,16 @@
     :imageUrl="imageUrl"
     :selectedFilter="selectedFilter"
   />
-  <p> {{ $store.state.more }} </p>
-  <button v-if="step === 0" style="margin-bottom: 40px" @click="$store.dispatch('getData')">
+  <p>{{ $store.state.more }}</p>
+  <button
+    v-if="step === 0"
+    style="margin-bottom: 40px"
+    @click="$store.dispatch('getData')"
+  >
     more
   </button>
+  <p>{{ name }}</p>
+  <p>{{ myAge }}</p>
 
   <div class="footer">
     <ul v-if="step === 0" class="footer-button-plus">
@@ -33,6 +39,7 @@
 <script>
 import Container from "./components/Container.vue";
 import postDatas from "./assets/db";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   name: "App",
@@ -48,17 +55,12 @@ export default {
       selectedFilter: null,
     };
   },
+  computed: {
+    ...mapState(["name"]),
+    ...mapState({ myAge: "age" }),
+  },
   methods: {
-    // more() {
-    //   axios
-    //     .get(`https://codingapple1.github.io/vue/more${this.clickedBtn}.json`)
-    //     .then((result) => {
-    //       this.clickedBtn++;
-
-    //       return this.postDatas.push(result.data);
-    //     })
-    //     .catch((error) => console.log(`Error: ${error}`));
-    // },
+    ...mapMutations['setMore'],
     upload(event) {
       const files = event.target.files;
 
