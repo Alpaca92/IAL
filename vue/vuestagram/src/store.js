@@ -8,8 +8,8 @@ const store = createStore({
     };
   },
   mutations: {
-    changeName(state) {
-      state.name = "kim";
+    increaseAge(state, payload) {
+      state.age += payload;
     },
   },
 });

@@ -8,6 +8,8 @@
       <li v-if="step === 2" @click="publish">Post</li>
     </ul>
     <img src="./assets/alpaca.png" class="logo" />
+    <h4>my age: {{ $store.state.age }}</h4>
+    <button @click="$store.commit('increaseAge', 10)">btn</button>
   </div>
 
   <Container
@@ -20,7 +22,6 @@
   <button v-if="step === 0" style="margin-bottom: 40px" @click="more">
     more
   </button>
-  <button @click="$store.commit('changeName')">btn</button>
 
   <div class="footer">
     <ul v-if="step === 0" class="footer-button-plus">
