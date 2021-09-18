@@ -15,8 +15,12 @@
     :postDatas="postDatas"
     :step="step"
     :imageUrl="imageUrl"
+    :selectedFilter="selectedFilter"
   />
-  <button v-if="step === 0" style="margin-bottom: 40px" @click="more">more</button>
+  <button v-if="step === 0" style="margin-bottom: 40px" @click="more">
+    more
+  </button>
+  <button @click="$store.commit('changeName')">btn</button>
 
   <div class="footer">
     <ul v-if="step === 0" class="footer-button-plus">
@@ -42,6 +46,7 @@ export default {
       clickedBtn: 0,
       step: 0,
       imageUrl: null,
+      selectedFilter: null,
     };
   },
   methods: {
@@ -70,12 +75,15 @@ export default {
         date: "May 15",
         liked: false,
         content: this.write,
-        filter: "perpetua",
+        filter: this.selectedFilter,
       };
 
       this.postDatas.unshift(newPost);
       this.step = 0;
     },
+  },
+  mounted() {
+    this.emitter.on("selectedFilter", (data) => (this.selectedFilter = data));
   },
 };
 </script>

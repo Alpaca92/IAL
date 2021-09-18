@@ -11,18 +11,20 @@
     <!-- 필터선택페이지 -->
     <div v-if="step === 1">
       <div
+        :class="selectedFilter"
         class="upload-image"
         :style="`background-image: url(${imageUrl})`"
       ></div>
       <div class="filters">
         <FilterBox
           :imageUrl="imageUrl"
+          :filter="filter"
           class="filter-1"
           v-for="filter in filters"
           :key="filter"
           :class="filter"
         >
-        {{ filter }}
+          {{ filter }}
         </FilterBox>
       </div>
     </div>
@@ -30,6 +32,7 @@
     <!-- 글작성페이지 -->
     <div v-if="step === 2">
       <div
+        :class="selectedFilter"
         class="upload-image"
         :style="`background-image: url(${imageUrl})`"
       ></div>
@@ -59,6 +62,7 @@ export default {
     postDatas: Array,
     step: Number,
     imageUrl: String,
+    selectedFilter: String,
   },
   data() {
     return {
