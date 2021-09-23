@@ -46,17 +46,22 @@
         </textarea>
       </div>
     </div>
+    <div v-if="step === 3">
+      <MyPage></MyPage>
+    </div>
   </div>
 </template>
 
 <script>
 import Post from "./Post.vue";
+import MyPage from "./MyPage.vue";
 import FilterBox from "./FilterBox.vue";
 
 export default {
   name: "Container",
   components: {
     Post,
+    MyPage,
     FilterBox,
   },
   props: {

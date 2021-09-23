@@ -17,7 +17,6 @@
     :imageUrl="imageUrl"
     :selectedFilter="selectedFilter"
   />
-  <p>{{ $store.state.more }}</p>
   <button
     v-if="step === 0"
     style="margin-bottom: 40px"
@@ -25,8 +24,6 @@
   >
     more
   </button>
-  <p>{{ name }}</p>
-  <p>{{ myAge }}</p>
 
   <div class="footer">
     <ul v-if="step === 0" class="footer-button-plus">
@@ -50,7 +47,7 @@ export default {
     return {
       postDatas,
       clickedBtn: 0,
-      step: 0,
+      step: 3,
       imageUrl: null,
       selectedFilter: null,
     };
@@ -60,7 +57,7 @@ export default {
     ...mapState({ myAge: "age" }),
   },
   methods: {
-    ...mapMutations['setMore'],
+    ...mapMutations["setMore"],
     upload(event) {
       const files = event.target.files;
 
