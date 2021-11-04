@@ -16,7 +16,9 @@
 <script>
   const root = document.getElementById('root');
   const span = React.createElement('span', { id: 'counter' }, '0');
-  ReactDOM.render(span, root);
+  const btn = React.createElement('button', { onClick: () => console.log('i am clicked') }, 'click me');
+  const div = React.createElement('div', null, [btn, span]);
+  ReactDOM.render(div, root);
 </script>
 
 </html>
