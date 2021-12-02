@@ -5,10 +5,11 @@ function App() {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
-    const response = await fetch(
-      `https://yts.mx/api/v2/list_movies.json?limit=50&sort_by=year&minimum_rating=8.5`
-    );
-    const json = await response.json();
+    const json = await (
+      await fetch(
+        `https://yts.mx/api/v2/list_movies.json?limit=50&sort_by=year&minimum_rating=8.5`
+      )
+    ).json();
 
     setMovies(json.data.movies);
     setLoading(false);
@@ -18,7 +19,31 @@ function App() {
     getMovies();
   }, []);
 
-  return <>{loading ? <h1>Loading...</h1> : null}</>;
+  return (
+    <>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          {movies.map((movie) => (
+            <div key={movie.id}>
+              <h2>{movie.title}</h2>
+              <img
+                src={movie.medium_cover_image}
+                alt={`The poster of ${movie.title}`}
+              />
+              <p>{movie.summary}</p>
+              <ul>
+                {movie.genres.map((genre) => (
+                  <li key={genre}>{genre}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
 }
 
 export default App;
