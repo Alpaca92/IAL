@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import Movie from "./components/Movie.js";
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
@@ -25,20 +27,13 @@ function App() {
         <h1>Loading...</h1>
       ) : (
         <div>
-          {movies.map((movie) => (
-            <div key={movie.id}>
-              <h2>{movie.title}</h2>
-              <img
-                src={movie.medium_cover_image}
-                alt={`The poster of ${movie.title}`}
-              />
-              <p>{movie.summary}</p>
-              <ul>
-                {movie.genres.map((genre) => (
-                  <li key={genre}>{genre}</li>
-                ))}
-              </ul>
-            </div>
+          {movies.map(({ title, medium_cover_image, summary, genres }) => (
+            <Movie
+              title={title}
+              coverImg={medium_cover_image}
+              summary={summary}
+              genres={genres}
+            />
           ))}
         </div>
       )}
