@@ -1,40 +1,52 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const Father = styled.div`
+const Wrapper = styled.div`
   display: flex;
 `;
 
+const Emoji = styled.span`
+  font-size: 40px;
+`;
+
+const lotationAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+    border-radius: 0%;
+  }
+  50% {
+    transform: rotate(180deg);
+    border-radius: 50%;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-radius: 0%;
+  }
+`;
+
 const Box = styled.div`
-  background-color: ${(props) => props.bgColor};
-  width: 100px;
-  height: 100px;
-`;
-
-const Circle = styled(Box)`
-  border-radius: 50%;
-`;
-
-const Btn = styled.button`
+  width: 200px;
+  height: 200px;
   background-color: tomato;
-  border: 0;
-  border-radius: 5px;
-`;
+  animation: ${lotationAnimation} 1s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-const Input = styled.input.attrs({ required: true })`
-  background-color: tomato;
+  ${Emoji} {
+    &:hover {
+      font-size: 100px;
+    }
+  }
 `;
 
 function App() {
   return (
     <>
-      <Father>
-        <Input />
-        <Input />
-        <Input />
-        <Input />
-        <Input />
-        <Input />
-      </Father>
+      <Wrapper>
+        <Box>
+          <Emoji as="p">🤔</Emoji>
+        </Box>
+      </Wrapper>
     </>
   );
 }
