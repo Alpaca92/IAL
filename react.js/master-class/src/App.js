@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const Emoji = styled.span`
@@ -39,13 +40,15 @@ const Box = styled.div`
   }
 `;
 
+const Title = styled.h1`
+  color: ${(props) => props.theme.textColor};
+`;
+
 function App() {
   return (
     <>
       <Wrapper>
-        <Box>
-          <Emoji as="p">🤔</Emoji>
-        </Box>
+        <Title>Hello</Title>
       </Wrapper>
     </>
   );
