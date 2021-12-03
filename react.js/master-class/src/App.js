@@ -14,13 +14,26 @@ const Circle = styled(Box)`
   border-radius: 50%;
 `;
 
+const Btn = styled.button`
+  background-color: tomato;
+  border: 0;
+  border-radius: 5px;
+`;
+
+const Input = styled.input.attrs({ required: true })`
+  background-color: tomato;
+`;
+
 function App() {
   return (
     <>
       <Father>
-        <Box bgColor="teal"></Box>
-        <Box bgColor="tomato"></Box>
-        <Circle bgColor="ivory"></Circle>
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
       </Father>
     </>
   );
