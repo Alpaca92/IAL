@@ -2,9 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 
 function Detail() {
-  const [{ title, medium_cover_image, rating }, setMovie] = useState(
-    {}
-  );
+  const [{ title, medium_cover_image, rating }, setMovie] = useState({});
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
   const getMovie = useCallback(async () => {
@@ -13,6 +12,7 @@ function Detail() {
     ).json();
 
     setMovie(json.data.movie);
+    setLoading(false);
   }, [id]);
 
   useEffect(() => {
@@ -20,11 +20,17 @@ function Detail() {
   }, [getMovie]);
 
   return (
-    <div>
-      <img src={medium_cover_image} alt={`poster of the ${title}`} />
-      <h2>{title}</h2>
-      <small>rating: {`${rating / 10}`}</small>
-    </div>
+    <>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          <img src={medium_cover_image} alt={`poster of the ${title}`} />
+          <h2>{title}</h2>
+          <small>rating: {`${rating / 10}`}</small>
+        </div>
+      )}
+    </>
   );
 }
 
