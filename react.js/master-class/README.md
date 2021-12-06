@@ -1,70 +1,181 @@
-# Getting Started with Create React App
+# Typescript with React.js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
 
-## Available Scripts
+`typescript`를 `react.js`와 사용하기 위해서는 두 가지 방법이 있다
 
-In the project directory, you can run:
+첫번째는 처음에 template를 `ts`로 해주는 방법이고
 
-### `yarn start`
+```
+$ npx create-react-app my-app --template typescript
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# or
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+$ yarn create react-app my-app --template typescript
+```
 
-### `yarn test`
+두번째는 기존에 사용중이던 `CRA`에 추가로 설치해주는 방법이다
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ npm i -S typescript @types/node @types/react @types/react-dom @types/jest
 
-### `yarn build`
+# or
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+$ yarn add typescript @types/node @types/react @types/react-dom @types/jest
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+두번째 방법에서는 설치 후 다음과 같이 실행해주면
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+$ npm start
+```
 
-### `yarn eject`
+알아서 `tsconfig.json`파일이 생성되는 것을 볼 수 있다
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<br />
+<br />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<hr />
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**reference**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[Typescript with CRA](https://create-react-app.dev/docs/adding-typescript/#installation)
+<br />
+<br />
+<br />
+<br />
+<br />
 
-## Learn More
+## Basic Syntax of Typescript
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`ts`는 `js`에 `type`이라는 개념을 추가한 언어로 이를 Shape(`obj`의 형태)이라고 부른다
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```ts
+const plus = (a: number, b: number) => a + b;
+```
 
-### Code Splitting
+`React.js`에서 주로 사용할 방식은 `props`의 `type`을 정해주는 것이므로
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```ts
+interface DummyShape = {
+  text: string;
+  number: number;
+  optionProp?: string;
+}
 
-### Analyzing the Bundle Size
+function Dummy ({text, number}: DummyShape) {
+  return <h1>{text}, {number ?? 'Number is undefined'}</h1>;
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+function App () {
+  return (
+    <>
+      <Dummy text='글자' number=0 />
+    </>
+  )
+}
+```
 
-### Making a Progressive Web App
+보통 위와 같은 방식을 사용하게 될 것이다
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+> 여기서 `?`는 optional이라는 뜻으로 지정된 `type`을 갖거나 `undefined`가 된다
 
-### Advanced Configuration
+마지막으로 `event`를 다루는 방법인데
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```ts
+function App() {
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const {
+      currentTarget: { value },
+    } = event;
 
-### Deployment
+    console.log(value);
+  };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  return (
+    <>
+      <button onClick={onClick}>click me</button>
+    </>
+  );
+}
+```
 
-### `yarn build` fails to minify
+위와 같은 방식으로 다루게 되는데 해당 방식은 각기 `event`의 종류, `tag`의 종류 등의 따라 달라지니 `documentation`을 참고하도록 하자
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br />
+<br />
+
+<hr />
+
+[SyntheticEvent](https://reactjs.org/docs/events.html)
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## Combination with 'styled-components'
+
+`typescript`의 `declaration file`인 `styled.d.ts`를 만든 후에 그 안에 `shape`을 만들어 `export`해주면 된다
+
+```ts
+// import original module declarations (.d mean declaration)
+import "styled-components";
+
+// and extend them!
+declare module "styled-components" {
+  export interface DefaultTheme {
+    textColor: string;
+    bgColor: string;
+    btnColor: string;
+  }
+}
+```
+
+그 후 적당한 파일을 만들어 `import`한 후 원하는 것들을 작성한 후 `export`해준다
+
+```ts
+import { DefaultTheme } from "styled-components";
+
+export const lightTheme: DefaultTheme = {
+  bgColor: "white",
+  textColor: "black",
+  btnColor: "tomato",
+};
+
+export const darkTheme: DefaultTheme = {
+  bgColor: "black",
+  textColor: "white",
+  btnColor: "teal",
+};
+```
+
+마지막으로 `index.tsx`파일로 와서 `import`해주고 `theme`으로 넣어주기만 하면 된다
+
+> `theme`은 본인이 작명하는 것이므로 굳이 `theme`일 필요는 없다
+
+```ts
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./theme";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <ThemeProvider theme={darkTheme}>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
+
+해당 `theme`을 사용할 때에는 `${props => props.theme.bgColor}`와 같이 일반적인 `props`를 다루는 것과 동일하다
+
+<br />
+<br />
+
+<hr />
+
+**reference**
+
+[styled components documentation](https://styled-components.com/docs/api#typescript)
