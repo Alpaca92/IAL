@@ -37,14 +37,15 @@ const boxVariants = {
       type: "spring",
       duration: 0.5,
       bounce: 0.5,
+      delayChildren: 0.2,
       staggerChildren: 0.3,
     },
   },
 };
 
 const circleVariants = {
-  start: { opacity: 0 },
-  end: { opacity: 1 },
+  start: { opacity: 0, y: 10 },
+  end: { opacity: 1, y: 0 },
 };
 
 function App() {
