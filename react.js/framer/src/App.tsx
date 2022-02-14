@@ -1,10 +1,14 @@
 import styled from "styled-components";
-import { motion, useMotionValue } from "framer-motion";
-import { useEffect, useRef } from "react";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useViewportScroll,
+} from "framer-motion";
 
-const Wrapper = styled.div`
-  height: 100vh;
+const Wrapper = styled(motion.div)`
   width: 100vw;
+  height: 200vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,14 +24,21 @@ const Box = styled(motion.div)`
 
 function App() {
   const x = useMotionValue(0);
-
-  useEffect(() => {
-    x.onChange(() => console.log(x.get()));
-  }, []);
+  const rotateZ = useTransform(x, [-800, 800], [-360, 360]);
+  const background = useTransform(
+    x,
+    [-800, 800],
+    [
+      "linear-gradient(135deg, rgb(0, 210, 238), rgb(0, 83, 238))",
+      "linear-gradient(135deg, rgb(0, 238, 155), rgb(238, 178, 0))",
+    ]
+  );
+  const { scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 5]);
 
   return (
-    <Wrapper>
-      <Box style={{ x }} drag="x" dragSnapToOrigin />
+    <Wrapper style={{ background }}>
+      <Box style={{ x, rotateZ, scale }} drag="x" dragSnapToOrigin />
     </Wrapper>
   );
 }
