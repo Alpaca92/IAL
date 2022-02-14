@@ -13,5 +13,7 @@ app.use("/public", express.static(__dirname + "/public"));
 app.get("/", (_, res) => res.render("home"));
 app.get("/*", (_, res) => res.redirect("/"));
 
+/* wss code */
+wss.on("connection", (socket) => console.log(socket));
 
 server.listen(5000, () => console.log("✔ URL: http://localhost:5000"));
