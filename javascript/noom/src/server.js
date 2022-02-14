@@ -13,7 +13,16 @@ app.use("/public", express.static(__dirname + "/public"));
 app.get("/", (_, res) => res.render("home"));
 app.get("/*", (_, res) => res.redirect("/"));
 
+/* fake db */
+const sockets = [];
+
 /* wss code */
-wss.on("connection", (socket) => console.log(socket));
+wss.on("connection", (socket) => {
+  sockets.push(socket);
+
+  socket.on("message", (message) => {
+    sockets.forEach((aSocket) => aSocket.send(message));
+  });
+});
 
 server.listen(5000, () => console.log("✔ URL: http://localhost:5000"));
