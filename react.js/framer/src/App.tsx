@@ -48,27 +48,30 @@ const overlayVariants = {
 };
 
 function App() {
-  const [clicked, setClicked] = useState(false);
-  const toggle = () => setClicked((prev) => !prev);
+  const [id, setId] = useState<null | string>(null);
 
   return (
-    <Wrapper onClick={toggle}>
+    <Wrapper>
       <Grid>
-        <Box layoutId="box" />
-        <Box />
-        <Box />
-        <Box />
+        {[1, 2, 3, 4].map((n) => (
+          <Box
+            onClick={() => setId(n.toString())}
+            key={n}
+            layoutId={n.toString()}
+          />
+        ))}
       </Grid>
       <AnimatePresence>
-        {clicked ? (
+        {id ? (
           <Overlay
+            onClick={() => setId(null)}
             variants={overlayVariants}
             initial="invisible"
             animate="visible"
             exit="invisible"
           >
             <Box
-              layoutId="box"
+              layoutId={id}
               style={{ width: 400, height: 200, backgroundColor: "#fff" }}
             />
           </Overlay>
