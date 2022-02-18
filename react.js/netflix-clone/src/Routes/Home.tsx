@@ -2,25 +2,26 @@ import { useQuery } from "react-query";
 import styled from "styled-components";
 import { getMovies, IGetMoviesResult } from "../api";
 import { makeImagePath } from "../utils";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useViewportScroll } from "framer-motion";
 import { useState } from "react";
+import { useNavigate, useMatch } from "react-router-dom";
 
-interface bgPhoto {
-  bgPhoto: string;
+interface bgphoto {
+  bgphoto: string;
 }
 
 const Wrapper = styled.div`
   background-color: #000;
 `;
 
-const Banner = styled.div<bgPhoto>`
+const Banner = styled.div<bgphoto>`
   height: 100vh;
   padding: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
-    url(${(props) => props.bgPhoto});
+    url(${(props) => props.bgphoto});
   background-size: cover;
 `;
 
@@ -35,6 +36,7 @@ const Overview = styled.p`
 `;
 
 const Loader = styled.div`
+  margin-top: 80px;
   height: 20vh;
   display: flex;
   justify-content: center;
@@ -55,13 +57,72 @@ const Row = styled(motion.div)`
   position: absolute;
 `;
 
-const Box = styled(motion.div)<bgPhoto>`
+const Box = styled(motion.div)<bgphoto>`
   height: 200px;
-  background-image: url(${(props) => props.bgPhoto});
+  background-image: url(${(props) => props.bgphoto});
   background-size: cover;
   background-position: center center;
   color: red;
   font-size: 20px;
+  cursor: pointer;
+
+  &:first-child {
+    transform-origin: center left;
+  }
+
+  &:last-child {
+    transform-origin: center right;
+  }
+`;
+
+const Info = styled(motion.div)`
+  padding: 10px;
+  background-color: ${(props) => props.theme.black.lighter};
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  opacity: 0;
+
+  h4 {
+    text-align: center;
+    font-size: 18px;
+  }
+`;
+
+const Overlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+`;
+
+const BigMovie = styled(motion.div)<{ scrolly: number }>`
+  position: absolute;
+  width: 40vw;
+  height: 80vh;
+  top: ${(props) => props.scrolly + 200}px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: ${(props) => props.theme.black.lighter};
+`;
+
+const BigCover = styled.div`
+  width: 100%;
+  height: 400px;
+  background-position: center center;
+  background-size: cover;
+`;
+
+const BigTitle = styled.h3`
+  color: ${(props) => props.theme.white.lighter};
+  text-align: center;
+  font-size: 36px;
+  margin-top: 10px;
 `;
 
 const rowVariants = {
@@ -76,8 +137,35 @@ const rowVariants = {
   },
 };
 
+const boxVariants = {
+  normal: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.3,
+    y: -50,
+    transition: {
+      delay: 0.5,
+      duration: 0.3,
+    },
+  },
+};
+
+const infoVariants = {
+  hover: {
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duration: 0.3,
+    },
+  },
+};
+
 function Home() {
   const offset = 6;
+  const { scrollY } = useViewportScroll();
+  const bigMovieMatch = useMatch("/movies/:movieId");
+  const navigate = useNavigate();
   const { data, isLoading } = useQuery<IGetMoviesResult>(
     ["movies", "nowPlaying"],
     getMovies
@@ -96,6 +184,19 @@ function Home() {
       setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
     }
   };
+  const onBoxClicked = (movieId: number) => {
+    navigate(`/movies/${movieId}`);
+  };
+  const onOverlayCLick = () => {
+    navigate("/");
+  };
+  const clickedMovie =
+    bigMovieMatch?.params.movieId &&
+    data?.results.find(
+      (movie) => movie.id === +(bigMovieMatch.params.movieId || 0)
+    );
+
+  console.log(clickedMovie);
 
   return (
     <Wrapper>
@@ -105,7 +206,7 @@ function Home() {
         <>
           <Banner
             onClick={increaseIndex}
-            bgPhoto={makeImagePath(data?.results[0].backdrop_path || "")}
+            bgphoto={makeImagePath(data?.results[0].backdrop_path || "")}
           >
             <Title>{data?.results[0].title}</Title>
             <Overview>{data?.results[0].overview}</Overview>
@@ -125,13 +226,54 @@ function Home() {
                   .slice(offset * index, offset * index + offset)
                   .map((movie) => (
                     <Box
+                      layoutId={movie.id + ""}
+                      variants={boxVariants}
+                      initial="normal"
+                      whileHover="hover"
+                      transition={{ type: "tween" }}
                       key={movie.id}
-                      bgPhoto={makeImagePath(movie.backdrop_path, "w500")}
-                    />
+                      bgphoto={makeImagePath(movie.backdrop_path, "w500")}
+                      onClick={() => {
+                        onBoxClicked(movie.id);
+                      }}
+                    >
+                      <Info variants={infoVariants}>
+                        <h4>{movie.title}</h4>
+                      </Info>
+                    </Box>
                   ))}
               </Row>
             </AnimatePresence>
           </Slider>
+          <AnimatePresence>
+            {bigMovieMatch ? (
+              <>
+                <Overlay
+                  onClick={onOverlayCLick}
+                  exit={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                />
+                <BigMovie
+                  scrolly={scrollY.get()}
+                  layoutId={bigMovieMatch.params.movieId}
+                >
+                  {clickedMovie && (
+                    <>
+                      <BigCover
+                        style={{
+                          backgroundImage: `url(${makeImagePath(
+                            clickedMovie.backdrop_path
+                          )}
+                          )`,
+                        }}
+                      />
+                      <BigTitle>{clickedMovie.title}</BigTitle>
+                    </>
+                  )}
+                </BigMovie>
+              </>
+            ) : null}
+          </AnimatePresence>
         </>
       )}
     </Wrapper>
