@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     line-height: 1;
+    overflow-x: hidden;
   }
   menu, ol, ul {
     list-style: none;
@@ -60,7 +61,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-weight: 300;
     font-family: 'Source Sans Pro', sans-serif;
-    color:black;
+    background-color: #000;
+    color:#fff;
     line-height: 1.2;
   }
   a {
