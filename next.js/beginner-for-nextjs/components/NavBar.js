@@ -17,11 +17,6 @@ export default function NavBar() {
           background-color: tomato;
         }
 
-        a {
-          text-decoration: none;
-          color: inherit;
-        }
-
         .active {
           color: blue;
         }
