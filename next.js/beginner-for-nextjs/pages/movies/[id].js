@@ -2,9 +2,8 @@ import { useRouter } from "next/router";
 
 export default function Detail() {
   const {
-    query: { id },
+    query: { id, title },
   } = useRouter();
-  console.log(id);
 
-  return <div>{id}</div>;
+  return <div>{`id: ${id}, title: ${title}`}</div>;
 }
