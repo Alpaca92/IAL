@@ -83,7 +83,9 @@ const Enter: NextPage = () => {
               required
             />
           ) : null}
-          {method === "email" ? <Button text={"Get login link"} /> : null}
+          {method === "email" ? (
+            <Button text={loading ? "Get login link" : "Login"} />
+          ) : null}
           {method === "phone" ? (
             <Button text={"Get one-time password"} />
           ) : null}
