@@ -17,7 +17,8 @@ async function handler(
   if (!user) return res.status(400).json({ ok: false });
 
   const payload = Math.floor(100000 + Math.random() * 900000) + "";
-  const token = await client.token.create({
+
+  await client.token.create({
     data: {
       payload,
       user: {
@@ -34,26 +35,21 @@ async function handler(
     },
   });
 
-  if (phone) {
-    const message = await twilioClient.messages.create({
-      messagingServiceSid: process.env.TWILIO_MSID,
-      // to: phone
-      to: process.env.MY_PHONE!,
-      body: `Your login token is ${payload}`,
-    });
+  // if (phone) {
+  //   await twilioClient.messages.create({
+  //     messagingServiceSid: process.env.TWILIO_MSID,
+  //     to: process.env.MY_PHONE!,
+  //     body: `Your login token is ${payload}`,
+  //   });
+  // } else if (email) {
+  //   await mail.send({
+  //     from: "be.minimal.o.o9@gmail.com",
+  //     to: "be.minimal.o.o9@gmail.com",
+  //     subject: "Your carrot market verification",
+  //     text: `Your login token is ${payload}`,
+  //   });
+  // }
 
-    console.log(message);
-  } else if (email) {
-    const email = await mail.send({
-      from: "be.minimal.o.o9@gmail.com",
-      // to: email,
-      to: "be.minimal.o.o9@gmail.com",
-      subject: "Your carrot market verification",
-      text: `Your login token is ${payload}`,
-    });
-
-    console.log(email);
-  }
   return res.json({
     ok: true,
   });
