@@ -18,8 +18,6 @@ const Upload: NextPage = () => {
     useMutation("/api/products");
   const onValid = ({ name, price, description }: UploadProductForm) => {
     if (loading) return;
-
-    console.log(name, price, description);
   };
 
   return (
