@@ -51,8 +51,7 @@ newPerson.printMyName();
 newPerson.printGender();
 
 /*
-ES7에서는 property를 지정할 때 this가 암묵적으로 적용되며
-메서드는 arrow function을 사용하도록 됨
+ES7에서는 constructor, super를 사용하지 않아도 되고
+property를 지정할 때 this가 암묵적으로 적용되며 메서드는 arrow function을 사용하도록 됨
 
-그리고 constructor, super를 사용하지 않아도 된다
 */
