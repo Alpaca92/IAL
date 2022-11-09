@@ -1,7 +1,11 @@
+import { authService } from "firebaseInstance";
+import { useState } from "react";
 import Router from "./Router";
 
 function App() {
-  return <Router />;
+  const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
+
+  return <Router isLoggedIn={isLoggedIn} />;
 }
 
 export default App;
