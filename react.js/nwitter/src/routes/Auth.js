@@ -1,14 +1,15 @@
 import {
   createUserWithEmailAndPassword,
-  getAuth,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { authService } from "firebaseInstance";
 import { useState } from "react";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
+  const [error, setError] = useState("");
 
   const onChange = (event) => {
     const {
@@ -24,20 +25,25 @@ const Auth = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const auth = getAuth();
 
     try {
       let data;
       if (newAccount) {
-        data = await createUserWithEmailAndPassword(auth, email, password);
+        data = await createUserWithEmailAndPassword(
+          authService,
+          email,
+          password
+        );
       } else {
-        data = await signInWithEmailAndPassword(auth, email, password);
+        data = await signInWithEmailAndPassword(authService, email, password);
       }
       console.log(data);
     } catch (error) {
-      console.error(error);
+      setError(error.message);
     }
   };
+
+  const toggleAccount = () => setNewAccount((prev) => !prev);
 
   return (
     <div>
@@ -58,8 +64,15 @@ const Auth = () => {
           value={password}
           onChange={onChange}
         />
-        <input type="submit" value={newAccount ? "Create Account" : "Login"} />
+        <input
+          type="submit"
+          value={newAccount ? "Create Account" : "Sign In"}
+        />
+        {error}
       </form>
+      <span onClick={toggleAccount}>
+        {newAccount ? "Sign In" : "Create Account"}
+      </span>
       <div>
         <button>Continue with Google</button>
         <button>Continue with Github</button>
