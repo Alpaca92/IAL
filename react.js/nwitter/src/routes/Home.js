@@ -1,14 +1,20 @@
-import { addDoc, collection, getDocs, query } from "firebase/firestore";
-import { db } from "firebaseInstance";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  onSnapshot,
+  query,
+} from "firebase/firestore";
+import { db, firestorePath } from "firebaseInstance";
 import { useEffect, useState } from "react";
 
 const Home = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
+  const firebaseQuery = query(collection(db, firestorePath));
 
   // #3.3 Realtime Nweets 07:07~
   const getNweets = async () => {
-    const firebaseQuery = query(collection(db, "nweets"));
     const querySnapshot = await getDocs(firebaseQuery);
 
     querySnapshot.forEach((document) => {
@@ -23,12 +29,16 @@ const Home = ({ userObj }) => {
 
   useEffect(() => {
     getNweets();
+
+    onSnapshot(firebaseQuery, (querySnapshot) => {
+      console.log("something happened");
+    });
   }, []);
 
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    const collectionRef = collection(db, "nweets");
+    const collectionRef = collection(db, firestorePath);
 
     await addDoc(collectionRef, {
       text: nweet,
