@@ -1,16 +1,17 @@
 void main() {
-  // 변수를 정의하는 방법
-  // 1. var
-  // 관습적으로 함수나 메소드 내부에 지역 변수를 선언할 때 var를 사용한다
-  var name = 'ayaan';
+  // Dynamic type
+  // 초기에 아무 변수도 넣어주지 않는다면 해당 변수의 type은 dynamic이 된다
+  var name;
+  name = 1;
+  name = 'string';
 
-  // var는 동일한 타입의 변수로 업데이트가 가능하다
-  name = 'alpaca';
+  // 혹은 직접 dynamic이라고 annotation할 수도 있다
+  dynamic anotherName = 'string';
+  anotherName = 1;
 
-  // 2. type annotation
-  // class에서 변수나 property를 선언할 때에는 타입을 지정해 준다
-  String anotherName = 'lucy';
-
-  // type을 지정해도 동일한 타입의 변수로 업데이트가 가능하다
-  anotherName = 'squirrel';
+  // dynamic에 대한 type은 별로 많지 않지만 if statement등을 사용하면 좀 더 안전한 코드를 작성할 수 있음
+  // extension의 auto complete 기능도 매우 유용함
+  if (name is String) {
+    // do something...
+  }
 }
