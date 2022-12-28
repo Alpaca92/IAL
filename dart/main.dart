@@ -1,9 +1,27 @@
 void main() {
-  String name = 'ayaan';
-  bool alive = true;
-  int age = 31;
-  double money = 123.123;
-  num x = 12;
-  x = 1.1;
-  x = -123;
+  var numbers = [
+    1,
+    2,
+    3,
+    4,
+    5,
+  ];
+  List<int> anotherNumbers = [
+    1,
+    2,
+    3,
+    4,
+  ];
+  numbers.add("1"); // error is occurred
+  numbers.add(1);
+
+  // collection if
+  var giveMeFive = true;
+  var collectionIf = [
+    1,
+    2,
+    3,
+    4,
+    if (giveMeFive) 5, // if giveMeFive is true, which return 5
+  ];
 }
