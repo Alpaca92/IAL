@@ -1,9 +1,16 @@
-void main() {
-  var name = 'ayaan';
-  var age = 30;
+void main() {\
+  var oldFriends = [
+    'nico',
+    'lynn',
+  ];
 
-  // string interpolation
-  var greeting = 'hello everyone, my name is $name and I am ${age + 1}';
+  // collection for
+  var newFriends = [
+    'lewis',
+    'ralph',
+    'darren',
+    for (var friend in oldFriends) '$friend :)',
+  ];
 
-  print(greeting);
+  print(newFriends);
 }
