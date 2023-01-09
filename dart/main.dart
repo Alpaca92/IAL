@@ -1,14 +1,17 @@
 void main() {
-  var player = {
-    // ts any == dart object
-    'nico': 'nico',
-    'xp': 19.99,
-    'superpower': false,
+  // Sets
+  var numbers = {
+    1,
+    2,
+    3,
+    4,
   };
-  
-  Map<int, bool> anotherPlayer = {
-    1: false,
-    2: true,
-    4: true,
+
+  Set<int> anotherNumbers = {
+    1,
+    2,
+    3,
+    4,
+    5,
   };
 }
