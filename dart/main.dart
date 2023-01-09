@@ -1,17 +1,9 @@
-void main() {
-  // Sets
-  var numbers = {
-    1,
-    2,
-    3,
-    4,
-  };
+String sayHello(String name) => "Hello $name ;)";
 
-  Set<int> anotherNumbers = {
-    1,
-    2,
-    3,
-    4,
-    5,
-  };
+String anotherSayHello(String name) {
+  return "Hello $name ;)";
+}
+
+void main() {
+  print(sayHello('ayaan'));
 }
