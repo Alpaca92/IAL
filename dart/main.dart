@@ -1,13 +1,15 @@
-String capitalizeName(String? name) =>
-    name != null ? name.toUpperCase() : 'anonymous';
-// or we can use QQ operator
-// name?.toUpperCase() ?? 'anonymous';
+typedef ListOfInts = List<int>;
+
+ListOfInts reverseListOfNumbers(ListOfInts list) {
+  var reversed = list.reversed;
+  return reversed.toList();
+}
+
 void main() {
-  capitalizeName('ayaan');
-
-  String? name;
-  name ??= 'ayaan'; // name = ayaan
-  name ??= 'another name'; // Warning: '??=' has type 'String' which excludes null.
-
-  print(name);
+  print(reverseListOfNumbers([
+    1,
+    2,
+    3,
+    4,
+  ]));
 }
