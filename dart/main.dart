@@ -1,11 +1,13 @@
-String sayHello(
-  String name,
-  int age, [
-  String? country, // null로 출력되는 걸 원치 않는다면 default value를 넣을 수 있음
-]) =>
-    'Hello $name, $age years old, you are come from $country';
-
+String capitalizeName(String? name) =>
+    name != null ? name.toUpperCase() : 'anonymous';
+// or we can use QQ operator
+// name?.toUpperCase() ?? 'anonymous';
 void main() {
-  print(sayHello('ayaan', 13, 'suwon'));
-  print(sayHello('ayaan', 18));
+  capitalizeName('ayaan');
+
+  String? name;
+  name ??= 'ayaan'; // name = ayaan
+  name ??= 'another name'; // Warning: '??=' has type 'String' which excludes null.
+
+  print(name);
 }
