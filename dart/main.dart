@@ -1,21 +1,29 @@
 class Player {
-  String name = 'ayaan';
-  final String nickname = 'alpaca';
-  int xp = 1500;
+  late final String name;
+  late int xp;
+
+  Player(String name, int xp) { // constructors
+    this.name = name;
+    this.xp = xp;
+  }
 
   void sayHello() {
-    print("HI my name is $name"); // dart에서는 this를 사용하지 않는다
+    print("Hi, my name is $name");
+  }
+}
+
+class AnotherPlayer {
+  final String name;
+  int xp;
+
+  AnotherPlayer(this.name, this.xp); // constructors shortcut
+
+  void sayHello() {
+    print("Hi, my name is $name");
   }
 }
 
 void main() {
-  var player = Player();
-  print(player.name); // ayaan
-  player.name = 'lalallaa';
-  print(player.name); // lalallaa
-
-  print(player.nickname); // alpaca
-  // player.nickname = 'laalalala'; // error is occured
-
+  var player = Player('ayaan', 1500);
   player.sayHello();
 }
