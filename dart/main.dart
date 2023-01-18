@@ -1,15 +1,21 @@
-typedef ListOfInts = List<int>;
+class Player {
+  String name = 'ayaan';
+  final String nickname = 'alpaca';
+  int xp = 1500;
 
-ListOfInts reverseListOfNumbers(ListOfInts list) {
-  var reversed = list.reversed;
-  return reversed.toList();
+  void sayHello() {
+    print("HI my name is $name"); // dart에서는 this를 사용하지 않는다
+  }
 }
 
 void main() {
-  print(reverseListOfNumbers([
-    1,
-    2,
-    3,
-    4,
-  ]));
+  var player = Player();
+  print(player.name); // ayaan
+  player.name = 'lalallaa';
+  print(player.name); // lalallaa
+
+  print(player.nickname); // alpaca
+  // player.nickname = 'laalalala'; // error is occured
+
+  player.sayHello();
 }
