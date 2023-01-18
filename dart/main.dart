@@ -1,29 +1,22 @@
 class Player {
-  late final String name;
-  late int xp;
-
-  Player(String name, int xp) { // constructors
-    this.name = name;
-    this.xp = xp;
-  }
-
-  void sayHello() {
-    print("Hi, my name is $name");
-  }
-}
-
-class AnotherPlayer {
-  final String name;
+  final name;
   int xp;
+  int age;
+  String team;
 
-  AnotherPlayer(this.name, this.xp); // constructors shortcut
+  Player({
+    required this.name,
+    required this.xp,
+    required this.team,
+    required this.age,
+  });
 
   void sayHello() {
-    print("Hi, my name is $name");
+    print("Hello, my name is $name, team: $team, age: $age, xp: $xp");
   }
 }
 
 void main() {
-  var player = Player('ayaan', 1500);
+  var player = Player(age: 12, xp: 1500, team: "red", name: 'ayaan');
   player.sayHello();
 }
