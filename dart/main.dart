@@ -1,7 +1,9 @@
+enum Team { red, blue }
+
 class Player {
   String name;
   int xp;
-  String team;
+  Team team;
 
   Player({
     required this.name,
@@ -15,13 +17,13 @@ class Player {
 }
 
 void main() {
-  var ayaan = Player(name: 'ayaan', xp: 1200, team: 'red')
+  var ayaan = Player(name: 'ayaan', xp: 1200, team: Team.red)
     ..name = 'ayaan'
     ..xp = 13000
-    ..team = 'blue';
+    ..team = Team.blue;
 
   // same thing
   ayaan.name = 'ayaan';
   ayaan.xp = 13000;
-  ayaan.team = 'blue';
+  ayaan.team = Team.blue;
 }
