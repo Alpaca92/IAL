@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View, ScrollView, Dimensions, ActivityIndicator } from "react-native";
 import * as Location from "expo-location";
+import { Ionicons } from "@expo/vector-icons";
 
 const API_KEY = "ed17dab996a555a7fdc7dfd329bf7eff";
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
@@ -53,7 +54,18 @@ export default function App() {
         ) : (
           days.map((day, i) => (
             <View style={styles.day} key={i}>
-              <Text style={styles.temp}>{parseFloat(day.main.temp).toFixed(1)}</Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "flex-start",
+                  width: "100%",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text style={styles.temp}>{parseFloat(day.main.temp).toFixed(1)}</Text>
+                {/** TODO: 날씨에 맞게 아이콘 불러오도록 하기 */}
+                <Ionicons name="cloudy-outline" size={68} color="black" />
+              </View>
               <Text style={styles.description}>{day.weather[0].main}</Text>
             </View>
           ))
@@ -84,8 +96,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   temp: {
-    marginTop: 50,
-    fontSize: 180,
+    fontSize: 100,
   },
   description: {
     marginTop: -30,
