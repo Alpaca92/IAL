@@ -1,13 +1,9 @@
 void main() {
-  var oldFruits = [
-    'apple',
-    'strawberry',
-  ];
+  var player = {
+    'name': 'John',
+    'xp': 19.11,
+  };
 
-  var newFruits = [
-    'grape',
-    'blueberry',
-    // collection for
-    for (var fruit in oldFruits) '👎 $fruit',
-  ];
+  // Map<String, Object>인 이유는 type은 모두 Object에서 상속되기 때문이다
+  // typescript의 any에 해당한다고 보면된다
 }
