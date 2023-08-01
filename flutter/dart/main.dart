@@ -1,3 +1,7 @@
 void main() {
-  print('hello world');
+  // dynamic type
+  var name;
+  name = 'name';
+  name = 12;
+  name = true;
 }
