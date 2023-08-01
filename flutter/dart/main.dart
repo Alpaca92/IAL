@@ -1,4 +1,8 @@
 void main() {
-  // const: create compile time constants
-  const API_KEY = "some-api-key";
+  String name = "tom";
+  bool isPlay = true;
+  int age = 10;
+  double money = 52.55;
+  num x = 12;
+  num y = 1.2;
 }
