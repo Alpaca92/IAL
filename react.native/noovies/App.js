@@ -4,8 +4,10 @@ import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { useAssets } from 'expo-asset';
 import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import Tabs from './navigation/Tabs';
 
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [assets] = useAssets([require('./assets/snack-icon.png')]);
@@ -18,8 +20,8 @@ export default function App() {
   }, [assets, loaded]);
 
   return assets || loaded ? (
-    <View onLayout={onLayoutRootView}>
-      <Text>we are down loading !</Text>
-    </View>
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
   ) : null;
 }
