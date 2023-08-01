@@ -1,8 +1,11 @@
 void main() {
-  String name = "tom";
-  bool isPlay = true;
-  int age = 10;
-  double money = 52.55;
-  num x = 12;
-  num y = 1.2;
+  // List
+  var numbers = [
+    1,
+    2,
+    3,
+    // collection if
+    if (true) 4,
+    5,
+  ];
 }
