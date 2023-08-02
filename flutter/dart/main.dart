@@ -1,6 +1,9 @@
 class Player {
-  final String name = 'susan';
-  int xp = 1000;
+  final String name;
+  int xp;
+
+  // constructor
+  Player(this.name, this.xp);
 
   void sayHello() {
     print("Hello, my name is $name");
@@ -8,6 +11,6 @@ class Player {
 }
 
 void main() {
-  var player = new Player();
+  var player = new Player('susan', 1500);
   player.sayHello();
 }
