@@ -1,7 +1,10 @@
-// null aware operator (QQ operator)
-String capitalizeName(String? name) => name?.toUpperCase() ?? 'anonymous';
+List<int> reverseListOfNumbers(List<int> list) => list.reversed.toList();
+
+// typedef
+typedef ListOfInts = List<int>;
+ListOfInts reverseListOfNumbers2(ListOfInts list) => list.reversed.toList();
 
 void main() {
-  capitalizeName('susan');
-  capitalizeName(null);
+  print(reverseListOfNumbers([1, 2, 3, 4]));
+  print(reverseListOfNumbers2([4, 1, 2, 3]));
 }
