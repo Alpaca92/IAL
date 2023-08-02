@@ -1,37 +1,26 @@
 enum Team { blue, red }
 
-class Human {
-  final String name;
+mixin class Strong {
+  final double strengthLevel = 15.9;
+}
 
-  Human({
-    required this.name,
-  });
-
-  void sayHello() {
-    print("Hello, $name");
+mixin class QuickRunner {
+  void runQuick() {
+    print("run quick !");
   }
 }
 
-class Player extends Human {
+mixin class Tall {
+  final double height = 1.99;
+}
+
+// mixin: no constructor
+class Player with Tall, Strong, QuickRunner {
   final Team team;
 
   Player({
     required this.team,
-    required super.name,
   });
-
-  @override
-  void sayHello() {
-    super.sayHello();
-    // do something...
-  }
 }
 
-void main() {
-  var player = Player(
-    name: 'nico',
-    team: Team.blue,
-  );
-
-  player.sayHello();
-}
+void main() {}
