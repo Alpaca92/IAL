@@ -1,22 +1,11 @@
-String sayHello(String name, int age, String country) {
-  return "Hello $name, you are $age, and you live in $country";
-}
-
-// named args
-String sayHello2({
-  required String name,
-  required int age,
-  required String country,
-}) {
-  return "Hello $name, you are $age, and you live in $country";
+// optional positional params
+// square brackets([])에 감싸지는 params는 반드시 마지막에 위치해야 함
+// square brackets을 쓰면 그 뒤의 모든 params도 optional이어야 함
+String sayHello(String name, [String country = 'cuba', int age = 10]) {
+  return "Hello $name, $country is very beautiful ! and you are $age";
 }
 
 void main() {
-  print(sayHello('susan', 19, 'Busan'));
-
-  print(sayHello2(
-    name: 'susan2',
-    country: 'Suwon',
-    age: 20,
-  ));
+  print(sayHello('nico', 'seoul'));
+  print(sayHello('nico'));
 }
