@@ -1,33 +1,35 @@
-enum Team { red, blue }
+enum Team { blue, red }
 
-abstract class Human {
-  void walk();
-}
+class Human {
+  final String name;
 
-class Player extends Human {
-  String name;
-  int xp;
-  Team team;
-
-  Player({
-    required this.name,
-    required this.xp,
-    required this.team,
-  });
+  Human(this.name);
 
   void sayHello() {
     print("Hello, $name");
   }
+}
 
-  void walk() {
-    print("i am walking");
+class Player extends Human {
+  final Team team;
+
+  Player({
+    required this.team,
+    required String name,
+  }) : super(name);
+
+  @override
+  void sayHello() {
+    super.sayHello();
+    // do something...
   }
 }
 
 void main() {
-  var nico = Player(
+  var player = Player(
     name: 'nico',
     team: Team.blue,
-    xp: 1200,
   );
+
+  player.sayHello();
 }
