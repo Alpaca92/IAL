@@ -1,7 +1,9 @@
+enum Team { red, blue }
+
 class Player {
   String name;
   int xp;
-  String team;
+  Team team;
 
   Player({
     required this.name,
@@ -17,15 +19,7 @@ class Player {
 void main() {
   var nico = Player(
     name: 'nico',
-    team: 'red',
+    team: Team.blue,
     xp: 1200,
-  )
-    ..name = 'las'
-    ..xp = 10; // cascade notation
-
-  /**
-     * same thing
-     * nico.name = 'las';
-     * nico.xp = 10;
-     */
+  );
 }
