@@ -1,8 +1,10 @@
+void hello(String name) {
+  print("Hello, $name");
+}
+
+String hello2(String name) => "Hello, $name";
+
 void main() {
-  var numbers = {
-    1,
-    2,
-    3,
-    4,
-  };
+  hello('john');
+  print(hello2('susan'));
 }
