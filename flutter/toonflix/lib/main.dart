@@ -9,16 +9,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
-        backgroundColor: const Color(0xFF181818),
+        backgroundColor: Color(0xFF181818),
         body: Padding(
-          padding: const EdgeInsets.symmetric(
+          padding: EdgeInsets.symmetric(
             horizontal: 20,
           ),
           child: Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 80,
               ),
               Row(
@@ -27,8 +27,8 @@ class App extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const Text(
-                        'Hey, Selena',
+                      Text(
+                        'Hey, Selena  ',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 38,
@@ -39,7 +39,7 @@ class App extends StatelessWidget {
                         'Welcome back',
                         style: TextStyle(
                           fontSize: 18,
-                          color: Colors.white.withOpacity(0.8),
+                          color: Color.fromRGBO(255, 255, 255, 0.8),
                         ),
                       ),
                     ],
