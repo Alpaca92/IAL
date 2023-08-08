@@ -72,18 +72,18 @@ class App extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Button(
                     text: 'Transfer',
                     textColor: Colors.black,
-                    bgColor: const Color(0xFFF1B33B),
+                    bgColor: Color(0xFFF1B33B),
                   ),
                   Button(
                     text: 'Request',
                     textColor: Colors.white,
-                    bgColor: const Color(0xFF1F2123),
+                    bgColor: Color(0xFF1F2123),
                   ),
                 ],
               ),
