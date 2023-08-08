@@ -12,11 +12,13 @@ class App extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<App> {
-  int counter = 0;
+  List<int> numbers = [];
 
   void onPressed() {
     setState(() {
-      counter = counter + 1;
+      numbers.add(numbers.length);
+
+      debugPrint('$numbers');
     });
   }
 
@@ -36,7 +38,7 @@ class _MyWidgetState extends State<App> {
                 ),
               ),
               Text(
-                '$counter',
+                '${numbers.length}',
                 style: const TextStyle(
                   fontSize: 30,
                 ),
