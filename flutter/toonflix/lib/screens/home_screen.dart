@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -44,8 +43,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onPausePressed() {
     timer.cancel();
+
     setState(() {
       isRunning = false;
+    });
+  }
+
+  void onResetPressed() {
+    timer.cancel();
+
+    setState(() {
+      isRunning = false;
+      totalSeconds = twentyFiveMinutes;
     });
   }
 
@@ -78,14 +87,30 @@ class _HomeScreenState extends State<HomeScreen> {
           Flexible(
             flex: 3,
             child: Center(
-              child: IconButton(
-                icon: Icon(isRunning
-                    ? Icons.pause_circle_outline_rounded
-                    : Icons.play_circle_outline),
-                iconSize: 120,
-                color: Theme.of(context).cardColor,
-                onPressed: isRunning ? onPausePressed : onStartPressed,
-              ),
+              child: isRunning
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.pause_circle_filled_rounded),
+                          iconSize: 120,
+                          color: Theme.of(context).cardColor,
+                          onPressed: onPausePressed,
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.replay_circle_filled_outlined),
+                          iconSize: 120,
+                          color: Theme.of(context).cardColor,
+                          onPressed: onResetPressed,
+                        ),
+                      ],
+                    )
+                  : IconButton(
+                      icon: const Icon(Icons.play_circle_filled),
+                      iconSize: 120,
+                      color: Theme.of(context).cardColor,
+                      onPressed: onStartPressed,
+                    ),
             ),
           ),
           Flexible(
