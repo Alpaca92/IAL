@@ -1,13 +1,12 @@
 void main() {
-  // 1. var는 타입 추론을 한다
-  var name = 'acapla';
-  name = 'some string';
+  // 3. dynamic type
+  // 어떤 타입으로 들어올지 모르는 경우 사용하면 유용함
+  var name;
+  name = '';
+  name = 1;
+  name = false;
 
-  print('my name is $name');
-
-  // 2. 명시적 타입
-  String new_name = 'acapla';
-  new_name = 'another string';
-
-  print('my new_name is $new_name');
+  if (name is String) {
+    // String에 대한 method를 사용할 수 있음
+  }
 }
