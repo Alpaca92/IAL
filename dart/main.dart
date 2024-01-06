@@ -1,7 +1,5 @@
 void main() {
-  late final String name;
-
-  // API 호출 등으로 인해 나중에 값이 할당 됨
-  name = 'api call';
-  name = 'final doesn\'t change';
+  // compile-time constant를 만들어 줌
+  const score = 123;
+  score = 124123;
 }
