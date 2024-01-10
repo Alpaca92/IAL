@@ -1,15 +1,10 @@
-void main() {
-  var numbers = {1, 2, 3, 4, 5};
-  numbers.add(3);
-  numbers.add(3);
-  numbers.add(3);
-  numbers.add(3);
-  numbers.add(3);
-  numbers.add(3);
-  numbers.add(3);
-  numbers.add(3);
-  numbers.add(3);
-  numbers.add(3);
+void sayHello(String name) {
+  print('Hello $name');
+}
 
-  print(numbers);
+String sayHello2(String name) => "Hello $name";
+
+void main() {
+  sayHello('acapla');
+  print(sayHello2('acapla'));
 }
