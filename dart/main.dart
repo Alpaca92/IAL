@@ -1,14 +1,11 @@
-class Player {
-  final String name = 'acapla';
-  int xp = 1500;
+typedef ListOfInts = List<int>;
 
-  void sayHello() {
-    print('Hi my name is $name'); // not recommended use this keyword
-  }
+ListOfInts reverseListOfNumbers(ListOfInts list) {
+  var reversed = list.reversed;
+
+  return reversed.toList();
 }
 
 void main() {
-  var player = Player(); // new is not required
-  print(player.name);
-  player.sayHello();
+  print(reverseListOfNumbers(([1, 2, 3, 4, 5])));
 }
