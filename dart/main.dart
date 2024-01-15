@@ -1,16 +1,14 @@
-String sayHello(String name, int age, String country) {
-  return 'Hello $name, Are you $age years old and from $country ?';
-}
+class Player {
+  final String name = 'acapla';
+  int xp = 1500;
 
-String sayHello2({
-  required String name,
-  required String country,
-  int age = 31,
-}) {
-  return 'Hello $name, Are you $age years old and from $country ?';
+  void sayHello() {
+    print('Hi my name is $name'); // not recommended use this keyword
+  }
 }
 
 void main() {
-  print(sayHello('acapla', 31, 'Korea'));
-  print(sayHello2(name: 'acapla', age: 11, country: 'Korea'));
+  var player = Player(); // new is not required
+  print(player.name);
+  player.sayHello();
 }
