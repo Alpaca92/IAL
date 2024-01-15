@@ -1,12 +1,13 @@
 class Player {
-  final String name;
+  String name;
   String team;
   int xp;
 
-  Player.fromJson(Map<String, dynamic> playerJson)
-      : name = playerJson['name'],
-        team = playerJson['team'],
-        xp = playerJson['xp'];
+  Player({
+    required this.name,
+    required this.xp,
+    required this.team,
+  });
 
   void sayHello() {
     print('Hi my name is $name'); // not recommended use this keyword
@@ -14,26 +15,19 @@ class Player {
 }
 
 void main() {
-  var players = [
-    {
-      'name': 'acapla',
-      'team': 'red',
-      'xp': 0,
-    },
-    {
-      'name': 'nico',
-      'team': 'blue',
-      'xp': 0,
-    },
-    {
-      'name': 'lynn',
-      'team': 'blue',
-      'xp': 0,
-    },
-  ];
+  var acapla = Player(name: 'acapla', xp: 0, team: 'red')
+    ..name = 'nico'
+    ..xp = 20
+    ..team = 'blue'; // cascade notation
 
-  players.forEach((playerJson) {
-    var player = Player.fromJson(playerJson);
-    player.sayHello();
-  });
+  /**
+   * acapla.name = 'nico';
+   * acapla.xp = 20;
+   * acapla.team = 'blue';
+   */
+
+  var newAcapla = acapla
+    ..name = 'las'
+    ..xp = 0
+    ..sayHello();
 }
