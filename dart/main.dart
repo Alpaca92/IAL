@@ -1,6 +1,8 @@
+enum Team { red, blue }
+
 class Player {
   String name;
-  String team;
+  Team team;
   int xp;
 
   Player({
@@ -10,24 +12,12 @@ class Player {
   });
 
   void sayHello() {
-    print('Hi my name is $name'); // not recommended use this keyword
+    print(
+        'Hi my name is $name, my team is ${team.toString()}'); // not recommended use this keyword
   }
 }
 
 void main() {
-  var acapla = Player(name: 'acapla', xp: 0, team: 'red')
-    ..name = 'nico'
-    ..xp = 20
-    ..team = 'blue'; // cascade notation
-
-  /**
-   * acapla.name = 'nico';
-   * acapla.xp = 20;
-   * acapla.team = 'blue';
-   */
-
-  var newAcapla = acapla
-    ..name = 'las'
-    ..xp = 0
-    ..sayHello();
+  var player = Player(name: 'name', xp: 0, team: Team.red);
+  player.sayHello();
 }
