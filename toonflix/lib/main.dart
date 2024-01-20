@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:toonflix/screens/home_screen.dart';
 
 void main() {
   runApp(const App());
@@ -11,7 +10,19 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Hello Flutter !',
+          ),
+          centerTitle: true,
+        ),
+        body: const Center(
+          child: Text(
+            'Hello world',
+          ),
+        ),
+      ),
     );
   }
 }
