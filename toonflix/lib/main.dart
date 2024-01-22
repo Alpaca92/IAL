@@ -13,7 +13,10 @@ class _AppState extends State<App> {
   int counter = 0;
 
   void onClicked() {
-    ++counter;
+    // you have to call 'setState' when you want to change the state
+    setState(() {
+      ++counter;
+    });
   }
 
   @override
