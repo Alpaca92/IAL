@@ -10,13 +10,15 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  int counter = 0;
+  final List<int> numbers = [];
 
   void onClicked() {
     // you have to call 'setState' when you want to change the state
     setState(() {
-      ++counter;
+      numbers.add(numbers.length);
     });
+
+    print(numbers);
   }
 
   @override
@@ -34,12 +36,7 @@ class _AppState extends State<App> {
                   fontSize: 30,
                 ),
               ),
-              Text(
-                '$counter',
-                style: TextStyle(
-                  fontSize: 30,
-                ),
-              ),
+              for (var number in numbers) Text('$number'),
               IconButton(
                 iconSize: 40,
                 onPressed: onClicked,
