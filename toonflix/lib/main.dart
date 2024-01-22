@@ -10,12 +10,11 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final List<int> numbers = [];
+  bool showTitle = true;
 
-  void onClicked() {
-    // you have to call 'setState' when you want to change the state
+  void toggleTitle() {
     setState(() {
-      numbers.add(numbers.length);
+      showTitle = !showTitle;
     });
   }
 
@@ -35,7 +34,11 @@ class _AppState extends State<App> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MyLargeTitle(),
+              showTitle ? const MyLargeTitle() : Text('nothing '),
+              IconButton(
+                onPressed: toggleTitle,
+                icon: Icon(Icons.remove_red_eye_rounded),
+              )
             ],
           ),
         ),
@@ -44,13 +47,34 @@ class _AppState extends State<App> {
   }
 }
 
-class MyLargeTitle extends StatelessWidget {
+class MyLargeTitle extends StatefulWidget {
   const MyLargeTitle({
     super.key,
   });
 
   @override
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
+}
+
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  @override
+  void initState() {
+    // build method보다 먼저 호출되야하며, 단 한 번만 호출 할 수 있음
+    super.initState();
+    print('init state');
+  }
+
+  @override
+  void dispose() {
+    // 위젯이 스크린에서 제거될 때 호출되는 method
+    super.dispose();
+    print('dispose method');
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print('build method');
+
     return Text(
       'My Large Title',
       style: TextStyle(
@@ -60,3 +84,5 @@ class MyLargeTitle extends StatelessWidget {
     );
   }
 }
+
+// initState => build => dispose
