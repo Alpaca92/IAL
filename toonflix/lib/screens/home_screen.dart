@@ -13,12 +13,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Flexible(
             flex: 1,
             child: Container(
-              alignment: Alignment.topCenter,
+              alignment: Alignment.bottomCenter,
               child: Text(
                 '25:00',
                 style: TextStyle(
@@ -31,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Flexible(
             flex: 3,
-            child: Container(
+            child: Center(
               child: IconButton(
                 iconSize: 120,
                 color: Theme.of(context).cardColor,
