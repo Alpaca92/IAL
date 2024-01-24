@@ -10,6 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isRunning = false;
   int totalSeconds = 25 * 60;
   late Timer timer;
 
@@ -21,6 +22,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onStartPressed() {
     timer = Timer.periodic(const Duration(seconds: 1), onTick);
+
+    setState(() {
+      isRunning = true;
+    });
+  }
+
+  void onPausePressed() {
+    timer.cancel();
+
+    setState(() {
+      isRunning = false;
+    });
   }
 
   @override
@@ -34,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                '$totalSeconds',
+                '${(totalSeconds / 60).floor()}:${totalSeconds % 60}',
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
                   fontSize: 90,
@@ -49,9 +62,11 @@ class _HomeScreenState extends State<HomeScreen> {
               child: IconButton(
                 iconSize: 120,
                 color: Theme.of(context).cardColor,
-                onPressed: onStartPressed,
+                onPressed: isRunning? onPausePressed : onStartPressed,
                 icon: Icon(
-                  Icons.play_circle_outline,
+                  isRunning
+                      ? Icons.pause_circle_outline
+                      : Icons.play_circle_outline,
                 ),
               ),
             ),
