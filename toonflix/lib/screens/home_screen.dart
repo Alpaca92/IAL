@@ -85,10 +85,11 @@ class _HomeScreenState extends State<HomeScreen> {
           Flexible(
             flex: 3,
             child: Center(
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
-                    iconSize: 120,
+                    iconSize: 80,
                     color: Theme.of(context).cardColor,
                     onPressed: isRunning ? onPausePressed : onStartPressed,
                     icon: Icon(
@@ -98,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   IconButton(
-                    iconSize: 120,
+                    iconSize: 80,
                     color: Theme.of(context).cardColor,
                     onPressed: onRestartPressed,
                     icon: Icon(Icons.restart_alt_outlined),
