@@ -70,7 +70,7 @@ class _UsernameScreenState extends State<EmailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'What\'s your emmail?',
+                'What\'s your email?',
                 style: TextStyle(
                   fontSize: Sizes.size24,
                   fontWeight: FontWeight.w700,
