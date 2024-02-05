@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -9,8 +10,6 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _selectedIndex = 0;
-
   final screens = [
     const Center(
       child: Text('Home'),
@@ -20,31 +19,26 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     ),
   ];
 
-  void _onDestinationSelected(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[_selectedIndex],
-      bottomNavigationBar: NavigationBar(
-        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: _onDestinationSelected,
-        destinations: const [
-          NavigationDestination(
-            icon: FaIcon(FontAwesomeIcons.house),
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.house,
+            ),
             label: 'Home',
           ),
-          NavigationDestination(
-            icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.search,
+            ),
             label: 'Searh',
           ),
         ],
       ),
+      tabBuilder: (context, index) => screens[index],
     );
   }
 }
