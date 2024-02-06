@@ -27,7 +27,7 @@ class NavTab extends StatelessWidget {
           color: Colors.transparent,
           child: AnimatedOpacity(
             opacity: isSelected ? 1 : 0.6,
-            duration: const Duration(milliseconds: 100),
+            duration: const Duration(milliseconds: 50),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
