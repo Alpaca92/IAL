@@ -75,6 +75,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  heroicons_flutter:
+    dependency: "direct main"
+    description:
+      name: heroicons_flutter
+      sha256: "45f9427a5c896798b9879cb160db0954218211a8b9a0a1fa891ff895f7a55b78"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
   lints:
     dependency: transitive
     description:
@@ -186,3 +194,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.6 <4.0.0"
+  flutter: ">=1.17.0"
