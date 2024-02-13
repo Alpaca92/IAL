@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons_flutter/heroicons_flutter.dart';
+import 'package:heroicons_flutter/heroicons_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,88 +9,149 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                    child: Image.asset(
-                      'assets/images/profile.jpg',
-                      width: 60,
-                    ),
-                  ),
-                  Icon(
-                    HeroiconsMini.plus,
-                    color: Theme.of(context).primaryColor,
-                    size: 30,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'MONDAY',
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.w500,
-                        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
                       ),
-                      const SizedBox(width: 8),
-                      Text(
-                        '16',
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      child: Image.asset(
+                        'assets/images/profile.jpg',
+                        width: 60,
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                ],
+                    ),
+                    Icon(
+                      HeroiconsMini.plus,
+                      color: Theme.of(context).primaryColor,
+                      size: 30,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const Card(
-              start: '11:30',
-              end: '12:20',
-              subject: 'design meeting',
-              participants: ['alex', 'helena', 'nana'],
-              backgroundColor: Color(0xfffdf871),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Card(
-              start: '12:35',
-              end: '14:10',
-              subject: 'daily project',
-              participants: ['me', 'richard', 'ciry', '+4'],
-              backgroundColor: Color(0xff956dc8),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Card(
-              start: '15:00',
-              end: '16:30',
-              subject: 'weekly planning',
-              participants: ['den', 'nana', 'mark'],
-              backgroundColor: Color(0xffc8ed68),
-            ),
-          ],
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'MONDAY',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          '16',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Text(
+                          'TODAY',
+                          style: TextStyle(
+                            fontSize: 40,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        const Text(
+                          '·',
+                          style: TextStyle(
+                            fontSize: 40,
+                            color: Color(0xff8e8e8e),
+                          ),
+                        ),
+                        const Text(
+                          '17',
+                          style: TextStyle(
+                            fontSize: 40,
+                            color: Color(0xff8e8e8e),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 25,
+                        ),
+                        const Text(
+                          '18',
+                          style: TextStyle(
+                            fontSize: 40,
+                            color: Color(0xff8e8e8e),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 25,
+                        ),
+                        const Text(
+                          '19',
+                          style: TextStyle(
+                            fontSize: 40,
+                            color: Color(0xff8e8e8e),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 25,
+                        ),
+                        const Text(
+                          '20',
+                          style: TextStyle(
+                            fontSize: 40,
+                            color: Color(0xff8e8e8e),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 30,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 30),
+                  ],
+                ),
+              ),
+              const Card(
+                start: '11:30',
+                end: '12:20',
+                subject: 'design meeting',
+                participants: ['alex', 'helena', 'nana'],
+                backgroundColor: Color(0xfffdf871),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Card(
+                start: '12:35',
+                end: '14:10',
+                subject: 'daily project',
+                participants: ['me', 'richard', 'ciry', '+4'],
+                backgroundColor: Color(0xff956dc8),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Card(
+                start: '15:00',
+                end: '16:30',
+                subject: 'weekly planning',
+                participants: ['den', 'nana', 'mark'],
+                backgroundColor: Color(0xffc8ed68),
+              ),
+            ],
+          ),
         ),
       ),
     );
