@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class VideoPost extends StatefulWidget {
   final Function onVideoFinished;
+  final int index;
 
   const VideoPost({
     super.key,
     required this.onVideoFinished,
+    required this.index,
   });
 
   @override
@@ -37,7 +40,7 @@ class _VideoPostState extends State<VideoPost> {
   @override
   void initState() {
     super.initState();
-    _initVideoPlayer();
+    // _initVideoPlayer();
   }
 
   @override
@@ -48,16 +51,23 @@ class _VideoPostState extends State<VideoPost> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: _videoPlayerController.value.isInitialized
-              ? VideoPlayer(_videoPlayerController)
-              : Container(
-                  color: Colors.teal,
-                ),
-        ),
-      ],
+    return VisibilityDetector(
+      key: Key('${widget.index}'),
+      onVisibilityChanged: (info) {
+        print('#${widget.index}: ${info.visibleFraction * 100}');
+      },
+      child: Stack(
+        children: [
+          Positioned.fill(
+            // child: _videoPlayerController.value.isInitialized
+            //     ? VideoPlayer(_videoPlayerController)
+            //     : Container(
+            //         color: Colors.black,
+            //       ),
+            child: Container(),
+          ),
+        ],
+      ),
     );
   }
 }
