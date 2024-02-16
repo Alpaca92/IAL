@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "author": "",
   "license": "MIT",
@@ -16,7 +18,7 @@
   "devDependencies": {
     "@types/node": "20.11.16",
     "@types/react": "18.2.53",
-    "typescript": "5.3.3"
+    "typescript": "^5.3.3"
   },
   "volta": {
     "node": "20.11.0",
