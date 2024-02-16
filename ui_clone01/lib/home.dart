@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons_flutter/heroicons_flutter.dart';
-import 'package:heroicons_flutter/heroicons_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,35 +8,35 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: Image.asset(
-                        'assets/images/profile.jpg',
-                        width: 60,
-                      ),
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
                     ),
-                    Icon(
-                      HeroiconsMini.plus,
-                      color: Theme.of(context).primaryColor,
-                      size: 30,
+                    child: Image.asset(
+                      'assets/images/profile.jpg',
+                      width: 60,
                     ),
-                  ],
-                ),
+                  ),
+                  Icon(
+                    HeroiconsMini.plus,
+                    color: Theme.of(context).primaryColor,
+                    size: 30,
+                  ),
+                ],
               ),
-              const SizedBox(height: 20),
-              Padding(
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   children: [
@@ -61,99 +60,113 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Text(
-                          'TODAY',
-                          style: TextStyle(
-                            fontSize: 40,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                        const Text(
-                          '·',
-                          style: TextStyle(
-                            fontSize: 40,
-                            color: Color(0xff8e8e8e),
-                          ),
-                        ),
-                        const Text(
-                          '17',
-                          style: TextStyle(
-                            fontSize: 40,
-                            color: Color(0xff8e8e8e),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 25,
-                        ),
-                        const Text(
-                          '18',
-                          style: TextStyle(
-                            fontSize: 40,
-                            color: Color(0xff8e8e8e),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 25,
-                        ),
-                        const Text(
-                          '19',
-                          style: TextStyle(
-                            fontSize: 40,
-                            color: Color(0xff8e8e8e),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 25,
-                        ),
-                        const Text(
-                          '20',
-                          style: TextStyle(
-                            fontSize: 40,
-                            color: Color(0xff8e8e8e),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                      ],
+                    const Expanded(
+                      child: Days(),
                     ),
                     const SizedBox(height: 30),
                   ],
                 ),
               ),
-              const Card(
-                start: '11:30',
-                end: '12:20',
-                subject: 'design meeting',
-                participants: ['alex', 'helena', 'nana'],
-                backgroundColor: Color(0xfffdf871),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Card(
-                start: '12:35',
-                end: '14:10',
-                subject: 'daily project',
-                participants: ['me', 'richard', 'ciry', '+4'],
-                backgroundColor: Color(0xff956dc8),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Card(
-                start: '15:00',
-                end: '16:30',
-                subject: 'weekly planning',
-                participants: ['den', 'nana', 'mark'],
-                backgroundColor: Color(0xffc8ed68),
-              ),
-            ],
-          ),
+            ),
+            const Card(
+              start: '11:30',
+              end: '12:20',
+              subject: 'design meeting',
+              participants: ['alex', 'helena', 'nana'],
+              backgroundColor: Color(0xfffdf871),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Card(
+              start: '12:35',
+              end: '14:10',
+              subject: 'daily project',
+              participants: ['me', 'richard', 'ciry', '+4'],
+              backgroundColor: Color(0xff956dc8),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Card(
+              start: '15:00',
+              end: '16:30',
+              subject: 'weekly planning',
+              participants: ['den', 'nana', 'mark'],
+              backgroundColor: Color(0xffc8ed68),
+            ),
+          ],
         ),
       ),
+    );
+  }
+}
+
+class Days extends StatelessWidget {
+  const Days({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      children: [
+        Text(
+          'TODAY',
+          style: TextStyle(
+            fontSize: 40,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+        const Text(
+          '·',
+          style: TextStyle(
+            fontSize: 40,
+            color: Color(0xff8e8e8e),
+          ),
+        ),
+        const Text(
+          '17',
+          style: TextStyle(
+            fontSize: 40,
+            color: Color(0xff8e8e8e),
+          ),
+        ),
+        const SizedBox(
+          width: 25,
+        ),
+        const Text(
+          '18',
+          style: TextStyle(
+            fontSize: 40,
+            color: Color(0xff8e8e8e),
+          ),
+        ),
+        const SizedBox(
+          width: 25,
+        ),
+        const Text(
+          '19',
+          style: TextStyle(
+            fontSize: 40,
+            color: Color(0xff8e8e8e),
+          ),
+        ),
+        const SizedBox(
+          width: 25,
+        ),
+        const Text(
+          '20',
+          style: TextStyle(
+            fontSize: 40,
+            color: Color(0xff8e8e8e),
+          ),
+        ),
+        const SizedBox(
+          width: 30,
+        ),
+      ],
     );
   }
 }
@@ -207,8 +220,8 @@ class Card extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 30,
+        horizontal: 10,
+        vertical: 20,
       ),
       decoration: BoxDecoration(
         color: backgroundColor,
