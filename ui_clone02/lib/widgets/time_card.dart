@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TimeCard extends StatelessWidget {
+  static const double width = 120;
+
   const TimeCard({
     super.key,
   });
@@ -14,8 +16,8 @@ class TimeCard extends StatelessWidget {
         Positioned(
           top: -10,
           child: Container(
-            width: 90,
-            height: 40,
+            width: width * 0.8,
+            height: 20,
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.5),
               borderRadius: BorderRadius.circular(10),
@@ -25,7 +27,7 @@ class TimeCard extends StatelessWidget {
         Positioned(
           top: -5,
           child: Container(
-            width: 100,
+            width: width * 0.9,
             height: 20,
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.7),
@@ -34,6 +36,7 @@ class TimeCard extends StatelessWidget {
           ),
         ),
         Container(
+          width: width,
           padding: const EdgeInsets.symmetric(
             horizontal: 15,
             vertical: 20,

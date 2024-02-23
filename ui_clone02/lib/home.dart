@@ -33,14 +33,27 @@ class _HomeState extends State<Home> {
         ),
         title: const Text('POMOTIMER'),
       ),
-      body: const Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TimeCard(),
-              TimeCard(),
+              const TimeCard(),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                ':',
+                style: TextStyle(
+                  fontSize: 80,
+                  color: Colors.white.withOpacity(0.4),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              const TimeCard(),
             ],
           ),
         ],
