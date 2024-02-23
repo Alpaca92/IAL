@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ui_clone02/widgets/time_card.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -32,33 +33,14 @@ class _HomeState extends State<Home> {
         ),
         title: const Text('POMOTIMER'),
       ),
-      body: Column(
+      body: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Stack(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                      vertical: 20,
-                    ),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    child: const Text(
-                      '12',
-                      style: TextStyle(
-                        color: Color(0xffe64d3d),
-                        fontSize: 70,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              TimeCard(),
+              TimeCard(),
             ],
           ),
         ],
