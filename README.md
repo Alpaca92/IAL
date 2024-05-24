@@ -95,13 +95,23 @@ endpoint에서 data fetching을 자동으로 trigger하고 컴포넌트를 캐�
 
 4. `useLazyQuery`
 
-`trigger`함수, 쿼리 결과, promise 정보를 담은 tuple을 반환한다
+`trigger`함수, 쿼리 결과, 마지막 promise 정보를 담은 tuple을 반환한다
 
 `useQuery`와 비슷해보이지만 data fetching이 일어날 때 수동제어가 가능하다는 차이점이 있다
 
+> `preferCacheValue`를 사용하여, 캐시값을 우선적으로 사용할 수 있다
+
 5. `useLazyQuerySubscription`
 
-https://redux-toolkit.js.org/rtk-query/usage/queries
+`trigger`함수, 마지막 promise 정보를 담은 tuple을 반환한다
+
+`useQuery`와 비슷해보이지만 data fetching이 일어날 때 수동제어가 가능하다는 차이점이 있다
+
+> `preferCacheValue`를 사용하여, 캐시값을 우선적으로 사용할 수 있다
+
+### query hook options
+
+
 
 ## references
 
