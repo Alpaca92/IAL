@@ -111,7 +111,29 @@ endpoint에서 data fetching을 자동으로 trigger하고 컴포넌트를 캐�
 
 ### query hook options
 
+query hook은 `(queryArg?, queryOptions?)` 두 개의 params을 받을 수 있다
 
+`queryArg`는 URL을 생성하기 위해 기본 `query` 콜백에 전달된다
+
+`queryOptions`는 data fetching을 제어하는데 사용할 수 있는 매개변수를 받는다
+
+- `skip` : 해당 렌더링에 대한 쿼리 실행을 'skip'하도록 허용한다 (기본값 `false`)
+
+- `pollingInterval` : 특정 시간간격(ms)마다 refetch를 허용한다 (기본값 `0(off)`)
+
+- `selectFromResult` : (TBD)
+
+- `refetchOnMountOrArgChange` : mount시 항상 강제로 쿼리를 다시 하도록 허용한다 (`true`일 때) 혹은 `number`가 제공되었을 때에는 해당 시간(s)이 경과한 후 동일한 캐시에 대한 마지막 쿼리를 다시 한다 (기본값 `false`)
+
+- `refetchOnFocus` : browser window가 focus됐을 때 쿼리를 다시 하도록 허용한다 (기본값 `false`)
+
+- `refetchOnReconnect` : 네트워크 연결이 다시 연결될 때 쿼리를 다시 하도록 허용한다 (기본값 `false`)
+
+> `refetch-*` 함수들은 기본값이 있고 이 기본값을 ovverride하는 것임
+
+### Frequently Used Query Hook Return Values
+
+TBD: https://redux-toolkit.js.org/rtk-query/usage/queries#frequently-used-query-hook-return-values
 
 ## references
 
