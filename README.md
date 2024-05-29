@@ -140,3 +140,5 @@ TBD: https://redux-toolkit.js.org/rtk-query/usage/queries#frequently-used-query-
 - [Redux Toolkit docs](https://redux-toolkit.js.org/rtk-query/usage/queries)
 
 - [React CRUD App: Build it with RTK Query & API](https://youtu.be/YQD3AgzjwUg)
+
+- [왜 RTK Query를 사용하였는가?](https://velog.io/@lsx2003/RTL-Query-Endpoints)
