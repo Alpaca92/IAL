@@ -1,4 +1,8 @@
-// pdf 269
+enum PhoneType {
+  Home = 'home',
+  Office = 'office',
+  Studio = 'studio',
+}
 
 interface PhoneNumberDictionary {
   [phone: string]: {
@@ -65,7 +69,7 @@ class AddressBook {
     this.fetchData();
   }
 
-  fetchData() {
+  fetchData(): void {
     fetchContacts().then(response => {
       this.contacts = response;
     });
@@ -80,13 +84,13 @@ class AddressBook {
     return this.contacts.filter(contact => contact.address === address);
   }
 
-  findContactByPhone(phoneNumber: number, phoneType: string): Contact[] {
+  findContactByPhone(phoneNumber: number, phoneType: PhoneType): Contact[] {
     return this.contacts.filter(
       contact => contact.phones[phoneType].num === phoneNumber
     );
   }
 
-  addContact(contact: Contact) {
+  addContact(contact: Contact): void {
     this.contacts.push(contact);
   }
 
@@ -100,4 +104,6 @@ class AddressBook {
   /* ------------------------------------------------ */
 }
 
-new AddressBook();
+const addressbookInstance = new AddressBook()
+addressbookInstance.findContactByPhone(1241230123, 'home'); // error
+addressbookInstance.findContactByPhone(1241230123, PhoneType.Home); // working
