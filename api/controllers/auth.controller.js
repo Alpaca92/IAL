@@ -1,5 +1,5 @@
 export const register = (req, res) => {
-  // db operations
+  const { username, email, password } = req.body;
 };
 
 export const login = (req, res) => {
