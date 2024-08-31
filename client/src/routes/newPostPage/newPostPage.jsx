@@ -1,4 +1,4 @@
-import "./newPostPage.scss";
+import './newPostPage.scss';
 
 function NewPostPage() {
   return (

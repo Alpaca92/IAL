@@ -1,12 +1,12 @@
-import { useState } from "react";
-import "./searchBar.scss";
+import { useState } from 'react';
+import './searchBar.scss';
 
-const types = ["buy", "rent"];
+const types = ['buy', 'rent'];
 
 function SearchBar() {
   const [query, setQuery] = useState({
-    type: "buy",
-    location: "",
+    type: 'buy',
+    location: '',
     minPrice: 0,
     maxPrice: 0,
   });
@@ -22,7 +22,7 @@ function SearchBar() {
           <button
             key={type}
             onClick={() => switchType(type)}
-            className={query.type === type ? "active" : ""}
+            className={query.type === type ? 'active' : ''}
           >
             {type}
           </button>

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./chat.scss";
+import { useState } from 'react';
+import './chat.scss';
 
 function Chat() {
   const [chat, setChat] = useState(true);
@@ -66,7 +66,9 @@ function Chat() {
               />
               John Doe
             </div>
-            <span className="close" onClick={()=>setChat(null)}>X</span>
+            <span className="close" onClick={() => setChat(null)}>
+              X
+            </span>
           </div>
           <div className="center">
             <div className="chatMessage">

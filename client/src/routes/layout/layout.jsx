@@ -1,6 +1,6 @@
-import "./layout.scss";
-import Navbar from "../../components/navbar/Navbar"
-import { Outlet } from "react-router-dom";
+import './layout.scss';
+import Navbar from '../../components/navbar/Navbar';
+import { Outlet } from 'react-router-dom';
 
 function Layout() {
   return (
@@ -9,7 +9,7 @@ function Layout() {
         <Navbar />
       </div>
       <div className="content">
-        <Outlet/>
+        <Outlet />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-import { useState } from "react";
-import "./navbar.scss";
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import './navbar.scss';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -46,7 +46,7 @@ function Navbar() {
             onClick={() => setOpen((prev) => !prev)}
           />
         </div>
-        <div className={open ? "menu active" : "menu"}>
+        <div className={open ? 'menu active' : 'menu'}>
           <a href="/">Home</a>
           <a href="/">About</a>
           <a href="/">Contact</a>
