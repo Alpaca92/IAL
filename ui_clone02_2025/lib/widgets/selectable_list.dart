@@ -1,37 +1,44 @@
 import 'package:flutter/material.dart';
 
-class SelectableList extends StatelessWidget {
+class SelectableList extends StatefulWidget {
   const SelectableList({super.key});
 
   @override
+  State<SelectableList> createState() => _SelectableListState();
+}
+
+class _SelectableListState extends State<SelectableList> {
+  final List<int> _items = [15, 20, 25, 30, 35];
+
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: List.generate(
-          5,
-          (index) => Padding(
+    return SizedBox(
+      height: 50,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          final item = _items[index % _items.length];
+          return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Container(
-              width: 100,
-              height: 100,
+              width: 80,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Center(
                 child: Text(
-                  '${(index * 5) + 15}',
+                  '$item',
                   style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
                     color: Color(0xffe64d3d),
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

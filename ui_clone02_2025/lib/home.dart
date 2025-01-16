@@ -34,31 +34,34 @@ class _HomeState extends State<Home> {
         ),
         title: const Text('POMOTIMER'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const TimeCard(),
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                ':',
-                style: TextStyle(
-                  fontSize: 80,
-                  color: Colors.white.withValues(alpha: 0.5),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const TimeCard(),
+                const SizedBox(
+                  width: 10,
                 ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              const TimeCard(),
-            ],
-          ),
-          SelectableList(),
-        ],
+                Text(
+                  ':',
+                  style: TextStyle(
+                    fontSize: 80,
+                    color: Colors.white.withValues(alpha: 0.5),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const TimeCard(),
+              ],
+            ),
+            SizedBox(height: 50),
+            SelectableList(),
+          ],
+        ),
       ),
     );
   }
