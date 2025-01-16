@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:ui_clone02_2025/enums/index.dart';
 import 'package:ui_clone02_2025/widgets/time_card.dart';
 
@@ -23,6 +24,7 @@ class _HomeState extends State<Home> {
     final int index = (offset / itemWidth).round() + startIndex;
 
     setState(() {
+      // stop the previous timer
       selectedIndex = index;
       remainingTime = timerList[index % timerList.length];
     });
@@ -123,6 +125,23 @@ class _HomeState extends State<Home> {
                       ),
                     );
                   },
+                ),
+              ),
+            ),
+            SizedBox(height: 80),
+            Container(
+              width: 100,
+              height: 100,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                color: Colors.black.withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: Center(
+                child: HeroIcon(
+                  HeroIcons.play,
+                  size: 50,
+                  color: Colors.white,
                 ),
               ),
             ),
