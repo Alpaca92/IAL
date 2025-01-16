@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ui_clone02_2025/widgets/selectable_list.dart';
 import 'package:ui_clone02_2025/widgets/time_card.dart';
 
 class Home extends StatefulWidget {
@@ -56,6 +57,7 @@ class _HomeState extends State<Home> {
               const TimeCard(),
             ],
           ),
+          SelectableList(),
         ],
       ),
     );
