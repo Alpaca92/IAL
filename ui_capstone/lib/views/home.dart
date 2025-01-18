@@ -1,16 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:ui_capstone/widgets/title.dart';
-
-// 가장 인기 있는 영화 목록이 표시되어야 합니다.
-// https://movies-api.nomadcoders.workers.dev/popular
-
-// 극장에서 상영 중인 영화 목록이 표시되어야 합니다.
-// https://movies-api.nomadcoders.workers.dev/now-playing
-
-// 곧 개봉할 영화 목록이 표시되어야 합니다.
-// https://movies-api.nomadcoders.workers.dev/coming-soon
+import 'package:ui_capstone/components/movie_section_list.dart';
+import 'package:ui_capstone/types/movie/index.dart';
 
 class HomeView extends StatelessWidget {
+  static const MovieList list = [
+    {
+      'title': 'The Shawshank Redemption',
+      'year': 1994,
+      'rating': 9.3,
+      'duration': '2h 22min',
+      'genre': 'Drama',
+      'director': 'Frank Darabont',
+      'cast': ['Tim Robbins', 'Morgan Freeman', 'Bob Gunton'],
+      'image': 'https://bit.ly/3vZQ9Zz',
+    },
+    {
+      'title': 'The Shawshank Redemption',
+      'year': 1994,
+      'rating': 9.3,
+      'duration': '2h 22min',
+      'genre': 'Drama',
+      'director': 'Frank Darabont',
+      'cast': ['Tim Robbins', 'Morgan Freeman', 'Bob Gunton'],
+      'image': 'https://bit.ly/3vZQ9Zz',
+    },
+    {
+      'title': 'The Shawshank Redemption',
+      'year': 1994,
+      'rating': 9.3,
+      'duration': '2h 22min',
+      'genre': 'Drama',
+      'director': 'Frank Darabont',
+      'cast': ['Tim Robbins', 'Morgan Freeman', 'Bob Gunton'],
+      'image': 'https://bit.ly/3vZQ9Zz',
+    },
+    {
+      'title': 'The Shawshank Redemption',
+      'year': 1994,
+      'rating': 9.3,
+      'duration': '2h 22min',
+      'genre': 'Drama',
+      'director': 'Frank Darabont',
+      'cast': ['Tim Robbins', 'Morgan Freeman', 'Bob Gunton'],
+      'image': 'https://bit.ly/3vZQ9Zz',
+    },
+  ];
+
   const HomeView({super.key});
 
   @override
@@ -24,7 +59,10 @@ class HomeView extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 80),
-                TitleWidget(title: 'Popular Movies'),
+                MovieSectionList(
+                  title: 'Popular Movies',
+                  movies: list,
+                ),
               ],
             ),
           ),
