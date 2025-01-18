@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ui_capstone/types/movie/index.dart';
 import 'package:ui_capstone/widgets/title.dart';
 
 class MovieSectionList extends StatelessWidget {
   final String title;
-  final MovieList movies;
+  // final MovieList movies;
 
   const MovieSectionList({
     super.key,
     required this.title,
-    required this.movies,
+    // required this.movies,
   });
 
   @override
