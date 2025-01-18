@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:ui_capstone/services/api.dart';
 import 'package:ui_capstone/widgets/title.dart';
 
 class MovieSectionList extends StatelessWidget {
   final String title;
   // final MovieList movies;
+  final Future<List<Map<String, dynamic>>> movies = ApiService.getPopularMovies();
 
-  const MovieSectionList({
+  MovieSectionList({
     super.key,
     required this.title,
     // required this.movies,

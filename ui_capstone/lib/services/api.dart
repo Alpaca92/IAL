@@ -1,8 +1,23 @@
-// 가장 인기 있는 영화 목록이 표시되어야 합니다.
-// https://movies-api.nomadcoders.workers.dev/popular
+import 'dart:convert';
 
-// 극장에서 상영 중인 영화 목록이 표시되어야 합니다.
-// https://movies-api.nomadcoders.workers.dev/now-playing
+import 'package:http/http.dart' as http;
 
-// 곧 개봉할 영화 목록이 표시되어야 합니다.
-// https://movies-api.nomadcoders.workers.dev/coming-soon
+class ApiService {
+  static const String baseUrl = 'https://movies-api.nomadcoders.workers.dev';
+  static const String popular = '$baseUrl/popular';
+  static const String nowPlaying = '$baseUrl/now-playing';
+  static const String comingSoon = '$baseUrl/coming-soon';
+
+  static Future<List<Map<String, dynamic>>> getPopularMovies() async {
+    List<Map<String, dynamic>> list = [];
+    final Uri url = Uri.parse(popular);
+    final response = await http.get(url);
+
+    if (response.statusCode != 200) throw Error();
+
+    final movies = jsonDecode(response.body);
+    print(movies);
+
+    return list;
+  }
+}
