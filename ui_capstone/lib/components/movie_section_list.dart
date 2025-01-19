@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ui_capstone/models/movielist_model.dart';
 import 'package:ui_capstone/services/api.dart';
+import 'package:ui_capstone/views/detail.dart';
 import 'package:ui_capstone/widgets/title.dart';
 
 enum MovieListFetchType { popular, nowPlaying, comingSoon }
@@ -54,29 +55,34 @@ class MovieSectionList extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final MovieModel movie = snapshot.data![index];
 
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: withTitle ? 200 : 300,
-                        height: 200,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            image: NetworkImage('https://image.tmdb.org/t/p/w500${movie.posterPath}'),
-                            fit: BoxFit.cover,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => DetailView(id: movie.id)));
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: withTitle ? 200 : 300,
+                          height: 200,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                              image: NetworkImage('https://image.tmdb.org/t/p/w500${movie.posterPath}'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      if (withTitle)
-                        Text(
-                          movie.title,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
+                        if (withTitle)
+                          Text(
+                            movie.title,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
-                    ],
+                      ],
+                    ),
                   );
                 },
                 separatorBuilder: (context, index) {
