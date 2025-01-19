@@ -23,6 +23,30 @@ class ApiService {
     return movies.results;
   }
 
+  static Future<MovieResults> getNowPlayingMovies() async {
+    final Uri url = Uri.parse(nowPlaying);
+    final response = await http.get(url);
+
+    if (response.statusCode != 200) throw Error();
+
+    final Map<String, dynamic> json = jsonDecode(response.body);
+    final MovieListModel movies = MovieListModel.fromJson(json);
+
+    return movies.results;
+  }
+
+  static Future<MovieResults> getCommingSoonMovies() async {
+    final Uri url = Uri.parse(comingSoon);
+    final response = await http.get(url);
+
+    if (response.statusCode != 200) throw Error();
+
+    final Map<String, dynamic> json = jsonDecode(response.body);
+    final MovieListModel movies = MovieListModel.fromJson(json);
+
+    return movies.results;
+  }
+
   static Future<MovieDetailModel> getMovieDetail(int id) async {
     final Uri url = Uri.parse('$movieDetail?id=$id');
     final response = await http.get(url);

@@ -16,6 +16,19 @@ class HomeView extends StatelessWidget {
               SizedBox(height: 80),
               MovieSectionList(
                 title: 'Popular Movies',
+                fetchType: MovieListFetchType.popular,
+              ),
+              SizedBox(height: 40),
+              MovieSectionList(
+                title: 'Now in Cinemas',
+                fetchType: MovieListFetchType.nowPlaying,
+                withTitle: true,
+              ),
+              SizedBox(height: 40),
+              MovieSectionList(
+                title: 'Comming Soon',
+                fetchType: MovieListFetchType.comingSoon,
+                withTitle: true,
               ),
             ],
           ),
