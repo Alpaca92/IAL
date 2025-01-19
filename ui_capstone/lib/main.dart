@@ -13,7 +13,10 @@ class MovieApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        useMaterial3: true,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
         textTheme: TextTheme(
           titleLarge: TextStyle(
             fontSize: 32,
@@ -21,7 +24,7 @@ class MovieApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomeView(),
+      home: HomeView(),
     );
   }
 }
