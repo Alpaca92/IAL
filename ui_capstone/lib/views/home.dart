@@ -8,13 +8,17 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: 80),
-            MovieSectionList(
-              title: 'Popular Movies',
-            ),
-          ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          padding: EdgeInsets.only(left: 20),
+          child: Column(
+            children: [
+              SizedBox(height: 80),
+              MovieSectionList(
+                title: 'Popular Movies',
+              ),
+            ],
+          ),
         ),
       ),
     );
