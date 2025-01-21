@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone01/widgets/auth_button.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -9,7 +11,6 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         // FIXME: 임시로 카메라 펀치홀을 피했는데, 이후에는 다른 방법을 찾아야 함
-        //
         toolbarHeight: 100,
         title: FaIcon(
           FontAwesomeIcons.twitter,
@@ -29,7 +30,14 @@ class HomeView extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 140),
-              Text('continue with Twitter'),
+              AuthButton(
+                logo: SvgPicture.asset(
+                  'assets/images/google_logo.svg',
+                  semanticsLabel: 'Google Logo',
+                  // FIXME: height를 옆에 text와 맞추고 싶다
+                ),
+                text: 'Continue with Google',
+              ),
             ],
           ),
         ),
