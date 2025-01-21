@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone01/views/create_account.dart';
 import 'package:tiktok_clone01/widgets/auth_button.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
+
+  void _onTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => CreatAccountView(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +79,7 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               AuthButton(
+                onTap: () => _onTap(context),
                 text: 'Create account',
                 inverted: true,
               ),
