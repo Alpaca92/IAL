@@ -44,7 +44,31 @@ class HomeView extends StatelessWidget {
                 logo: FaIcon(FontAwesomeIcons.apple),
                 text: 'Continue with Apple',
               ),
-              // TODO: or line
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        endIndent: 10,
+                        thickness: 1,
+                      ),
+                    ),
+                    Text(
+                      "or",
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        indent: 10,
+                        thickness: 1,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               AuthButton(
                 text: 'Create account',
                 inverted: true,
