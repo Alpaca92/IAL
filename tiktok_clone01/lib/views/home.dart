@@ -20,7 +20,7 @@ class HomeView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -54,7 +54,7 @@ class HomeView extends StatelessWidget {
                 text: TextSpan(
                   style: TextStyle(
                     color: Colors.grey.shade600,
-                    fontSize: 22,
+                    fontSize: 20,
                   ),
                   children: [
                     TextSpan(text: 'By signing up, you agree to our '),
@@ -86,7 +86,7 @@ class HomeView extends StatelessWidget {
                 text: TextSpan(
                   style: TextStyle(
                     color: Colors.grey.shade600,
-                    fontSize: 18,
+                    fontSize: 16,
                   ),
                   children: [
                     TextSpan(text: 'Have an account already? '),
