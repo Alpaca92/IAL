@@ -23,6 +23,7 @@ class AuthButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 14),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (logo != null) logo!,
             SizedBox(width: 12),

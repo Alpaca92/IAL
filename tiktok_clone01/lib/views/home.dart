@@ -38,6 +38,11 @@ class HomeView extends StatelessWidget {
                 ),
                 text: 'Continue with Google',
               ),
+              SizedBox(height: 20),
+              AuthButton(
+                logo: FaIcon(FontAwesomeIcons.apple),
+                text: 'Continue with Apple',
+              ),
             ],
           ),
         ),
