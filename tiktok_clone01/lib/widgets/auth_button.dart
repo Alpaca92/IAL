@@ -25,12 +25,12 @@ class AuthButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (logo != null) logo!,
-            SizedBox(width: 10),
+            SizedBox(width: 12),
             Text(
               text,
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 26,
+                fontSize: 22,
                 fontWeight: FontWeight.w600,
               ),
             ),
