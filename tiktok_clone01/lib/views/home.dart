@@ -22,6 +22,7 @@ class HomeView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 140),
               Text(
@@ -43,6 +44,61 @@ class HomeView extends StatelessWidget {
                 logo: FaIcon(FontAwesomeIcons.apple),
                 text: 'Continue with Apple',
               ),
+              // TODO: or line
+              AuthButton(
+                text: 'Create account',
+                inverted: true,
+              ),
+              SizedBox(height: 30),
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: 22,
+                  ),
+                  children: [
+                    TextSpan(text: 'By signing up, you agree to our '),
+                    TextSpan(
+                      text: 'Terms',
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    TextSpan(text: ',\n'),
+                    TextSpan(
+                      text: 'Privacy Policy',
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    TextSpan(text: ', and '),
+                    TextSpan(
+                      text: 'Cookie Use.',
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 40),
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: 18,
+                  ),
+                  children: [
+                    TextSpan(text: 'Have an account already? '),
+                    TextSpan(
+                      text: 'Log in',
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
