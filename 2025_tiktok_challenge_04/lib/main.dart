@@ -20,6 +20,9 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ThemeData(
         useMaterial3: true,
+        bottomSheetTheme: BottomSheetThemeData(
+          modalBackgroundColor: Colors.white,
+        ),
         textTheme: Typography.blackMountainView,
         brightness: Brightness.light,
         scaffoldBackgroundColor: Colors.white,

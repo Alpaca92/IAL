@@ -2,6 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_challenge_04/widgets/reply_timeline.dart';
+import 'package:tiktok_challenge_04/widgets/thread_ellipsis.dart';
 
 import '../constants/gaps.dart';
 import '../utils.dart';
@@ -11,6 +12,16 @@ class Thread extends StatelessWidget {
   const Thread({
     super.key,
   });
+
+  void _onEllipsisTap(BuildContext context) async {
+    await showModalBottomSheet(
+      context: context,
+      showDragHandle: true,
+      useSafeArea: true,
+      builder: (context) => ThreadEllipsis(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final faker = Faker();
@@ -52,7 +63,17 @@ class Thread extends StatelessWidget {
                         ),
                       ),
                       Row(
-                        children: [Text("${since}m"), Gaps.h12, const Icon(FontAwesomeIcons.ellipsis, size: 16)],
+                        children: [
+                          Text("${since}m"),
+                          Gaps.h12,
+                          GestureDetector(
+                            onTap: () => _onEllipsisTap(context),
+                            child: Icon(
+                              FontAwesomeIcons.ellipsis,
+                              size: 16,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
