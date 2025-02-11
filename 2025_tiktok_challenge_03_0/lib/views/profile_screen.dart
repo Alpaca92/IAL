@@ -188,6 +188,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               SliverPersistentHeader(
+                pinned: true,
                 delegate: PersistentTabBar(),
               ),
             ];
