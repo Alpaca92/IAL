@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_challenge_04/constants/gaps.dart';
 import 'package:tiktok_challenge_04/constants/sizes.dart';
+import 'package:tiktok_challenge_04/views/settings_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
     super.key,
   });
+
+  void _onSettingsPressed(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const SettingsScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +33,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             IconButton(
               icon: FaIcon(FontAwesomeIcons.sliders),
-              onPressed: () {
-                // TODO: push to settings screen
-              },
+              onPressed: () => _onSettingsPressed(context),
             ),
           ],
         ),
