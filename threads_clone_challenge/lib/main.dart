@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_challenge_04/views/main_navigation_screen.dart';
+import 'views/main_navigation_screen.dart';
 
 import 'constants/sizes.dart';
 

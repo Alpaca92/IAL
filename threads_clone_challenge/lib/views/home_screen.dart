@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tiktok_challenge_04/widgets/go_to_top_button.dart';
+import '../widgets/go_to_top_button.dart';
 
 import '../constants/gaps.dart';
 import '../widgets/thread.dart';

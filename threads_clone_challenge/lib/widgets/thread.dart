@@ -1,8 +1,8 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tiktok_challenge_04/widgets/reply_timeline.dart';
-import 'package:tiktok_challenge_04/widgets/thread_ellipsis.dart';
+import 'reply_timeline.dart';
+import 'thread_ellipsis.dart';
 
 import '../constants/gaps.dart';
 import '../utils.dart';

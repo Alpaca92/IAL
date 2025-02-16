@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_challenge_04/constants/sizes.dart';
+import '../constants/sizes.dart';
 
 class PersistentTabBar extends SliverPersistentHeaderDelegate {
   @override

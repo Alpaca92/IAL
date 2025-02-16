@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tiktok_challenge_04/constants/gaps.dart';
-import 'package:tiktok_challenge_04/constants/sizes.dart';
-import 'package:tiktok_challenge_04/views/privacy_screen.dart';
+import '../constants/gaps.dart';
+import '../constants/sizes.dart';
+import 'privacy_screen.dart';
 
 typedef IconText = Map<String, dynamic>;
 

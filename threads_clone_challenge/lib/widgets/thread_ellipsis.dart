@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_challenge_04/constants/gaps.dart';
-import 'package:tiktok_challenge_04/constants/sizes.dart';
+import '../constants/gaps.dart';
+import '../constants/sizes.dart';
 
 class ThreadEllipsis extends StatefulWidget {
   const ThreadEllipsis({super.key});

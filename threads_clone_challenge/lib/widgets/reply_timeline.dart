@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tiktok_challenge_04/widgets/reply_circle_avartars.dart';
+import 'reply_circle_avartars.dart';
 
 import '../constants/sizes.dart';
 import '../utils.dart';
