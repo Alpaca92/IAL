@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:threads/models/thread_model.dart';
+import 'package:tiktok_challenge_04/models/thread_model.dart';
 
 class ThreadRepository {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -35,14 +35,8 @@ class ThreadRepository {
   }
 
   Stream<List<ThreadModel>> getThreads() {
-    return _db
-        .collection("threads")
-        .orderBy("createdAt", descending: true)
-        .snapshots()
-        .map(
-          (event) => event.docs
-              .map((doc) => ThreadModel.fromJson(doc.data()))
-              .toList(),
+    return _db.collection("threads").orderBy("createdAt", descending: true).snapshots().map(
+          (event) => event.docs.map((doc) => ThreadModel.fromJson(doc.data())).toList(),
         );
   }
 }

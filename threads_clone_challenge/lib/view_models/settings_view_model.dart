@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:threads/repos/settings_repo.dart';
+import 'package:tiktok_challenge_04/repos/settings_repo.dart';
 
 import '../models/settings_model.dart';
 

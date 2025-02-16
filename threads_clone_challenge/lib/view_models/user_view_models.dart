@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:threads/models/user_model.dart';
-import 'package:threads/repos/auth_repo.dart';
+import 'package:tiktok_challenge_04/models/user_model.dart';
+import 'package:tiktok_challenge_04/repos/auth_repo.dart';
 
 import '../repos/user_repo.dart';
 

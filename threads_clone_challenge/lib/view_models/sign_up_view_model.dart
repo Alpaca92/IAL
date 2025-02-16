@@ -4,11 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:threads/view_models/user_view_models.dart';
-import 'package:threads/views/home_screen.dart';
+import 'package:tiktok_challenge_04/view_models/user_view_models.dart';
+import 'package:tiktok_challenge_04/views/home_screen.dart';
 
 import '../repos/auth_repo.dart';
-import '../utils.dart';
 
 class SignUpViewModel extends AsyncNotifier<void> {
   late final AuthenticationRepository _repository;

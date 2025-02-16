@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:threads/models/thread_model.dart';
-import 'package:threads/repos/thread_repo.dart';
+import 'package:tiktok_challenge_04/models/thread_model.dart';
+import 'package:tiktok_challenge_04/repos/thread_repo.dart';
 
 import '../repos/auth_repo.dart';
 import '../repos/user_repo.dart';
@@ -37,9 +37,7 @@ class ThreadViewModel extends StreamNotifier<List<ThreadModel>> {
                 }),
               )
             : null;
-        await ref
-            .read(threadRepository)
-            .createThread(authorId: authorId, body: body, imageUrls: imageUrl);
+        await ref.read(threadRepository).createThread(authorId: authorId, body: body, imageUrls: imageUrl);
 
         throw ("todo");
       },
@@ -47,7 +45,6 @@ class ThreadViewModel extends StreamNotifier<List<ThreadModel>> {
   }
 }
 
-final threadProvider =
-    StreamNotifierProvider<ThreadViewModel, List<ThreadModel>>(
+final threadProvider = StreamNotifierProvider<ThreadViewModel, List<ThreadModel>>(
   () => ThreadViewModel(),
 );

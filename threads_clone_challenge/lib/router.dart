@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:threads/repos/auth_repo.dart';
-import 'package:threads/views/camera_screen.dart';
-import 'package:threads/views/login_screen.dart';
-import 'package:threads/views/main_navigation_screen.dart';
-import 'package:threads/views/privacy_screen.dart';
-import 'package:threads/views/settings_screen.dart';
-import 'package:threads/views/sign_up_screen.dart';
+import 'package:tiktok_challenge_04/repos/auth_repo.dart';
+import 'package:tiktok_challenge_04/views/camera_screen.dart';
+import 'package:tiktok_challenge_04/views/login_screen.dart';
+import 'package:tiktok_challenge_04/views/main_navigation_screen.dart';
+import 'package:tiktok_challenge_04/views/privacy_screen.dart';
+import 'package:tiktok_challenge_04/views/settings_screen.dart';
+import 'package:tiktok_challenge_04/views/sign_up_screen.dart';
 
 final routerProvider = Provider((ref) {
   return GoRouter(
@@ -14,8 +14,7 @@ final routerProvider = Provider((ref) {
     redirect: (context, state) {
       final isLoggedIn = ref.watch(authRepository).isLoggedIn;
       if (!isLoggedIn) {
-        if (state.matchedLocation != SignUpScreen.routeURL &&
-            state.matchedLocation != LoginScreen.routeURL) {
+        if (state.matchedLocation != SignUpScreen.routeURL && state.matchedLocation != LoginScreen.routeURL) {
           return SignUpScreen.routeURL;
         }
       }

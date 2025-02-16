@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'discover_screen.dart';
+import 'package:tiktok_challenge_04/views/search_screen.dart';
+
+import '../constants/sizes.dart';
+import '../widgets/nav_tab.dart';
 import 'home_screen.dart';
 import 'like_screen.dart';
 import 'profile_screen.dart';
 import 'write_screen.dart';
-
-import '../constants/sizes.dart';
-import '../widgets/nav_tab.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({
@@ -38,7 +38,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 1,
-            child: const DiscoverScreen(),
+            child: const SearchScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 2,
