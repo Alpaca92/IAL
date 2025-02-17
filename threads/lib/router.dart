@@ -66,7 +66,7 @@ final routerProvider = Provider((ref) {
         builder: (context, state) {
           return const CameraScreen();
         },
-      )
+      ),
     ],
   );
 });

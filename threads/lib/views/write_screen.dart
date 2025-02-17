@@ -162,14 +162,14 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
                                       color: Colors.grey.shade800,
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           )
                         : const SizedBox.shrink(),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -189,9 +189,7 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
                 onTap: () async {
                   await ref.read(threadProvider.notifier).uploadThread(
                         body: _textController.text,
-                        files: _picture != null
-                            ? _picture!.map((e) => File(e.path)).toList()
-                            : null,
+                        files: _picture?.map((e) => File(e.path)).toList(),
                       );
 
                   context.pop();
@@ -205,7 +203,7 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

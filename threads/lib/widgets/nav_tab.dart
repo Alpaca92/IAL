@@ -47,7 +47,7 @@ class NavTab extends ConsumerWidget {
                   style: TextStyle(
                     color: isDark ? Colors.white : Colors.black,
                   ),
-                )
+                ),
               ],
             ),
           ),

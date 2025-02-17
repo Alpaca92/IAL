@@ -105,7 +105,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             trailing: _loggingOut
                 ? const CircularProgressIndicator.adaptive()
                 : const SizedBox(),
-          )
+          ),
         ],
       ),
     );

@@ -55,11 +55,11 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                   leading: Icon(e[0] as IconData),
                   title: Text(e[1] as String),
                   trailing: e[1] == "Mentions"
-                      ? Row(
+                      ? const Row(
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Text("Everyone"),
-                            Icon(Icons.chevron_right)
+                            Icon(Icons.chevron_right),
                           ],
                         )
                       : const Icon(Icons.chevron_right),
@@ -83,7 +83,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             leading: Icon(Icons.heart_broken),
             title: Text('Hide likes'),
             trailing: Icon(FontAwesomeIcons.arrowUpRightFromSquare),
-          )
+          ),
         ],
       ),
     );

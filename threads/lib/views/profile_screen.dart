@@ -115,7 +115,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                 CircleAvatar(
                                   backgroundImage: NetworkImage(getImage()),
                                   radius: 30,
-                                )
+                                ),
                               ],
                             ),
                             Gaps.v4,
@@ -189,7 +189,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                       ),
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ],
@@ -251,7 +251,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

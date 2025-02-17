@@ -78,7 +78,7 @@ class Thread extends StatelessWidget {
                               FontAwesomeIcons.ellipsis,
                               size: 16,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ],
@@ -91,11 +91,11 @@ class Thread extends StatelessWidget {
                 Gaps.v8,
                 if (sources != null) ImageCarousel(sources: sources),
                 Gaps.v12,
-                SizedBox(
+                const SizedBox(
                   width: 150,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
+                    children: [
                       Icon(FontAwesomeIcons.heart),
                       Icon(FontAwesomeIcons.comment),
                       Icon(FontAwesomeIcons.arrowsRotate),

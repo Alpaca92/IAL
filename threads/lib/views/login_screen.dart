@@ -190,14 +190,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ],
                 ),
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Icon(FontAwesomeIcons.meta),
                   Gaps.h12,
                   Text("Meta"),
                 ],
-              )
+              ),
             ],
           ),
         ),

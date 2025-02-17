@@ -187,14 +187,14 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                   ],
                 ),
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Icon(FontAwesomeIcons.meta),
                   Gaps.h12,
                   Text("Meta"),
                 ],
-              )
+              ),
             ],
           ),
         ),

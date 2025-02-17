@@ -24,7 +24,7 @@ class ThreadModel {
       'authorId': authorId,
       'body': body,
       'imageUrls': imageUrls,
-      'createdAt': createdAt
+      'createdAt': createdAt,
     };
   }
 }

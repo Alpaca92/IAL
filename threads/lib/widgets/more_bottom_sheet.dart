@@ -32,8 +32,8 @@ class MoreBottomSheet extends StatelessWidget {
             borderRadius: BorderRadius.circular(25),
             color: Colors.grey.shade300,
           ),
-          child: Column(
-            children: const [
+          child: const Column(
+            children: [
               ListTile(
                 leading: Icon(Icons.person),
                 title: Text('Unfollow'),

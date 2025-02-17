@@ -239,7 +239,7 @@ class _CameraScreenState extends State<CameraScreen>
                                     borderRadius: BorderRadius.circular(50),
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),

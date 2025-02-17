@@ -126,7 +126,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 },
                 child: const GoToTopButton(),
               ),
-            )
+            ),
         ],
       ),
     );

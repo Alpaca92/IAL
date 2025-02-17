@@ -19,7 +19,7 @@ class ActivityTile extends ConsumerWidget {
       'Followed you',
       'Definitely broken!',
       'Liked your post',
-      'Replied to your post'
+      'Replied to your post',
     ]);
     final hours = faker.randomGenerator.integer(9, min: 1);
     final payload = faker.lorem.sentence();
@@ -49,7 +49,7 @@ class ActivityTile extends ConsumerWidget {
               color: Colors.grey,
               fontSize: 14,
             ),
-          )
+          ),
         ],
       ),
       subtitle: Column(

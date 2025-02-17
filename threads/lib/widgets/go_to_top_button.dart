@@ -44,7 +44,7 @@ class GoToTopButton extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
