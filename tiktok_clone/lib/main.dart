@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
-import 'package:tiktok_clone/features/discover/discover_screen.dart';
+import 'package:tiktok_clone/features/authentication/sign_up_screen.dart';
 
 void main() {
   runApp(const TikTokApp());
@@ -16,10 +16,7 @@ class TikTokApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color(0xFFE9435A),
         scaffoldBackgroundColor: Colors.white,
-        bottomAppBarTheme: const BottomAppBarTheme(
-          color: Colors.transparent,
-          elevation: 1,
-        ),
+        bottomAppBarTheme: const BottomAppBarTheme(color: Colors.transparent, elevation: 1),
         appBarTheme: const AppBarTheme(
           foregroundColor: Colors.black,
           backgroundColor: Colors.transparent,
@@ -32,7 +29,7 @@ class TikTokApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const DiscoverScreen(), // TEMP: Replace with SignUpScreen()
+      home: const SignUpScreen(),
     );
   }
 }
