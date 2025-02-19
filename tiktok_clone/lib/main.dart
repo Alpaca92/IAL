@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
-import 'package:tiktok_clone/features/authentication/sign_up_screen.dart';
+import 'package:tiktok_clone/features/onboarding/interests_screen.dart';
 
 void main() {
   runApp(const TikTokApp());
@@ -21,6 +21,7 @@ class TikTokApp extends StatelessWidget {
           foregroundColor: Colors.black,
           backgroundColor: Colors.transparent,
           elevation: 0,
+          scrolledUnderElevation: 0, // NOTE: when the app bar is scrolled under, it will not have an elevation
           centerTitle: true,
           titleTextStyle: TextStyle(
             fontSize: Sizes.size16 + Sizes.size2,
@@ -29,7 +30,7 @@ class TikTokApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const SignUpScreen(),
+      home: const InterestsScreen(), // FIXME: 테스트 중으로 "const SignUpScreen()"으로 돌려놔야 함
     );
   }
 }
