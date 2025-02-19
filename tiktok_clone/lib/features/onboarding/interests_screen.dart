@@ -116,7 +116,7 @@ class InterestsScreen extends StatelessWidget {
         ),
       ),
       // NOTE: Material 3에서는 기본적으로 80.0의 높이가 적용
-      // 따라서 더 이상 padding을 넣는다고 해서 높이가 늘어나지 않음
+      // 따라서 강의 처럼 padding을 넣는다고 해서 높이가 늘어나지 않음
       bottomNavigationBar: BottomAppBar(
         height: 100,
         child: Container(
