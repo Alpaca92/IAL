@@ -23,18 +23,18 @@ class _EmailScreenState extends State<EmailScreen> {
     if (_email.isEmpty || _isEmailValid() != null) return;
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => const PasswordScreen(),
-      ),
+      MaterialPageRoute(builder: (context) => const PasswordScreen()),
     );
   }
 
   String? _isEmailValid() {
     if (_email.isEmpty) return null;
 
-    final regExp = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    final regExp = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
     if (!regExp.hasMatch(_email)) {
-      return "Invalid email";
+      return 'Invalid email';
     }
 
     return null;
@@ -61,15 +61,9 @@ class _EmailScreenState extends State<EmailScreen> {
     return GestureDetector(
       onTap: _onScaffoldTap,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Sign up',
-          ),
-        ),
+        appBar: AppBar(title: const Text('Sign up')),
         body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: Sizes.size36,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: Sizes.size36),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -92,9 +86,7 @@ class _EmailScreenState extends State<EmailScreen> {
                   hintText: 'Email',
                   errorText: _isEmailValid(),
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.grey.shade400,
-                    ),
+                    borderSide: BorderSide(color: Colors.grey.shade400),
                   ),
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(

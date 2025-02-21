@@ -16,12 +16,16 @@ class TikTokApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color(0xFFE9435A),
         scaffoldBackgroundColor: Colors.white,
-        bottomAppBarTheme: const BottomAppBarTheme(color: Colors.transparent, elevation: 1),
+        bottomAppBarTheme: const BottomAppBarTheme(
+          color: Colors.transparent,
+          elevation: 1,
+        ),
         appBarTheme: const AppBarTheme(
           foregroundColor: Colors.black,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          scrolledUnderElevation: 0, // NOTE: when the app bar is scrolled under, it will not have an elevation
+          scrolledUnderElevation:
+              0, // NOTE: when the app bar is scrolled under, it will not have an elevation
           centerTitle: true,
           titleTextStyle: TextStyle(
             fontSize: Sizes.size16 + Sizes.size2,
@@ -30,7 +34,8 @@ class TikTokApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const InterestsScreen(), // FIXME: 테스트 중으로 "const SignUpScreen()"으로 돌려놔야 함
+      home:
+          const InterestsScreen(), // FIXME: 테스트 중으로 "const SignUpScreen()"으로 돌려놔야 함
     );
   }
 }
