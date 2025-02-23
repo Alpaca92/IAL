@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/features/navigation/widgets/nav_tab.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -20,20 +21,37 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: screens[_selectedIndex],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: _onTap,
-        destinations: [
-          const NavigationDestination(
-            icon: FaIcon(FontAwesomeIcons.house),
-            label: 'Home',
-          ),
-          const NavigationDestination(
-            icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
-            label: 'Search',
-          ),
-        ],
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.black,
+        child: Row(
+          children: [
+            NavTab(
+              text: 'Home',
+              icon: FontAwesomeIcons.house,
+              isSelected: _selectedIndex == 0,
+              onTap: () => _onTap(0),
+            ),
+            NavTab(
+              text: 'Discover',
+              icon: FontAwesomeIcons.magnifyingGlass,
+              isSelected: _selectedIndex == 1,
+              onTap: () => _onTap(1),
+            ),
+            NavTab(
+              text: 'Inbox',
+              icon: FontAwesomeIcons.message,
+              isSelected: _selectedIndex == 3,
+              onTap: () => _onTap(3),
+            ),
+            // custom center tab
+            NavTab(
+              text: 'Profile',
+              icon: FontAwesomeIcons.user,
+              isSelected: _selectedIndex == 4,
+              onTap: () => _onTap(4),
+            ),
+          ],
+        ),
       ),
     );
   }
