@@ -11,14 +11,6 @@ class MainNavigationScreen extends StatefulWidget {
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _selectedIndex = 0;
 
-  final screens = [
-    const Center(child: Text('Home')),
-    const Center(child: Text('Search')),
-    const Center(child: Text('Search')),
-    const Center(child: Text('Search')),
-    const Center(child: Text('Search')),
-  ];
-
   void _onTap(int index) {
     setState(() {
       _selectedIndex = index;
@@ -28,36 +20,18 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onTap,
-        selectedItemColor: Theme.of(context).primaryColor,
-        items: [
-          const BottomNavigationBarItem(
+      // body: screens[_selectedIndex],
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: _onTap,
+        destinations: [
+          const NavigationDestination(
             icon: FaIcon(FontAwesomeIcons.house),
             label: 'Home',
-            tooltip: 'what are you',
           ),
-          const BottomNavigationBarItem(
+          const NavigationDestination(
             icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
             label: 'Search',
-            tooltip: 'what are you searching for',
-          ),
-          const BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
-            label: 'Search',
-            tooltip: 'what are you searching for',
-          ),
-          const BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
-            label: 'Search',
-            tooltip: 'what are you searching for',
-          ),
-          const BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
-            label: 'Search',
-            tooltip: 'what are you searching for',
           ),
         ],
       ),
