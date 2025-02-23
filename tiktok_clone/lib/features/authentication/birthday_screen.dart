@@ -17,18 +17,15 @@ class _UsernameScreenState extends State<BirthdayScreen> {
   DateTime initialDate = DateTime.now();
 
   void _onNextTap() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const InterestsScreen(),
-      ),
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => const InterestsScreen()),
+      (route) => false,
     );
   }
 
   void _setTextFieldDate(DateTime date) {
     final textDate = date.toString().split(' ').first;
-    _birthdayController.value = TextEditingValue(
-      text: textDate,
-    );
+    _birthdayController.value = TextEditingValue(text: textDate);
   }
 
   @override
@@ -46,15 +43,9 @@ class _UsernameScreenState extends State<BirthdayScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Sign up',
-        ),
-      ),
+      appBar: AppBar(title: const Text('Sign up')),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: Sizes.size36,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: Sizes.size36),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -69,9 +60,7 @@ class _UsernameScreenState extends State<BirthdayScreen> {
             Gaps.v8,
             const Text(
               'Your birthday won\'t be shown publicly.',
-              style: TextStyle(
-                color: Colors.black54,
-              ),
+              style: TextStyle(color: Colors.black54),
             ),
             Gaps.v16,
             TextField(
@@ -80,22 +69,15 @@ class _UsernameScreenState extends State<BirthdayScreen> {
               cursorColor: Theme.of(context).primaryColor,
               decoration: InputDecoration(
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.grey.shade400,
-                  ),
+                  borderSide: BorderSide(color: Colors.grey.shade400),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).primaryColor,
-                  ),
+                  borderSide: BorderSide(color: Theme.of(context).primaryColor),
                 ),
               ),
             ),
             Gaps.v16,
-            FormButton(
-              disabled: false,
-              onTap: _onNextTap,
-            ),
+            FormButton(disabled: false, onTap: _onNextTap),
           ],
         ),
       ),
