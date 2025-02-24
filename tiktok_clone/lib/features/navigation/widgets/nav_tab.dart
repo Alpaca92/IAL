@@ -7,12 +7,14 @@ class NavTab extends StatelessWidget {
     super.key,
     required this.text,
     required this.icon,
+    required this.selectedIcon,
     required this.isSelected,
     required this.onTap,
   });
 
   final String text;
   final IconData icon;
+  final IconData selectedIcon;
   final bool isSelected;
   final Function onTap;
 
@@ -26,7 +28,7 @@ class NavTab extends StatelessWidget {
           duration: const Duration(milliseconds: 300),
           child: Column(
             children: [
-              FaIcon(icon, color: Colors.white),
+              FaIcon(isSelected ? selectedIcon : icon, color: Colors.white),
               Gaps.v5,
               Text(text, style: const TextStyle(color: Colors.white)),
             ],

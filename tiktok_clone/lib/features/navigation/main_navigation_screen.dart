@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/features/navigation/widgets/nav_tab.dart';
 
+const screens = [
+  Text('Home'),
+  Text('Discover'),
+  Text('Inbox'),
+  Text('Profile'),
+];
+
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
 
@@ -21,24 +28,28 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: screens.elementAt(_selectedIndex),
       bottomNavigationBar: BottomAppBar(
         color: Colors.black,
         child: Row(
           children: [
             NavTab(
               text: 'Home',
+              selectedIcon: FontAwesomeIcons.house,
               icon: FontAwesomeIcons.house,
               isSelected: _selectedIndex == 0,
               onTap: () => _onTap(0),
             ),
             NavTab(
               text: 'Discover',
+              selectedIcon: FontAwesomeIcons.compass,
               icon: FontAwesomeIcons.magnifyingGlass,
               isSelected: _selectedIndex == 1,
               onTap: () => _onTap(1),
             ),
             NavTab(
               text: 'Inbox',
+              selectedIcon: FontAwesomeIcons.solidMessage,
               icon: FontAwesomeIcons.message,
               isSelected: _selectedIndex == 3,
               onTap: () => _onTap(3),
@@ -46,6 +57,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             // custom center tab
             NavTab(
               text: 'Profile',
+              selectedIcon: FontAwesomeIcons.solidUser,
               icon: FontAwesomeIcons.user,
               isSelected: _selectedIndex == 4,
               onTap: () => _onTap(4),
