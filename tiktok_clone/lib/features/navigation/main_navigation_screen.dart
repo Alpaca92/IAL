@@ -42,8 +42,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             ),
             NavTab(
               text: 'Discover',
-              selectedIcon: FontAwesomeIcons.compass,
-              icon: FontAwesomeIcons.magnifyingGlass,
+              selectedIcon: FontAwesomeIcons.solidCompass,
+              icon: FontAwesomeIcons.compass,
               isSelected: _selectedIndex == 1,
               onTap: () => _onTap(1),
             ),

@@ -22,6 +22,8 @@ class NavTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
+        behavior:
+            HitTestBehavior.opaque, // NOTE: Expanded로 인한 빈공간도 이벤트 리스닝 가능하게 함
         onTap: () => onTap(),
         child: AnimatedOpacity(
           opacity: isSelected ? 1 : 0.6,
