@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/features/navigation/widgets/nav_tab.dart';
-
-const screens = [
-  Text('Home'),
-  Text('Discover'),
-  Text('Inbox'),
-  Text('Profile'),
-];
+import 'package:tiktok_clone/features/navigation/widgets/post_video_button.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -25,10 +20,24 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     });
   }
 
+  void _onPostVideoButtonTap() {
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (context) => const Scaffold()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens.elementAt(_selectedIndex),
+      body: Stack(
+        children: [
+          Offstage(offstage: _selectedIndex != 0, child: Container()),
+          Offstage(offstage: _selectedIndex != 1, child: Container()),
+          Offstage(offstage: _selectedIndex != 2, child: Container()),
+          Offstage(offstage: _selectedIndex != 3, child: Container()),
+          Offstage(offstage: _selectedIndex != 4, child: Container()),
+        ],
+      ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.black,
         child: Row(
@@ -47,6 +56,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               isSelected: _selectedIndex == 1,
               onTap: () => _onTap(1),
             ),
+            Gaps.h24,
+            GestureDetector(
+              onTap: _onPostVideoButtonTap,
+              child: const PostVideoButton(),
+            ),
+            Gaps.h24,
             NavTab(
               text: 'Inbox',
               selectedIcon: FontAwesomeIcons.solidMessage,
