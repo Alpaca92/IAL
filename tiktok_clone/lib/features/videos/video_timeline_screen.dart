@@ -9,14 +9,16 @@ class VideoTimelineScreen extends StatefulWidget {
 }
 
 class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
-  int _itemCount = 4;
   final PageController _pageController = PageController();
+  final Duration _scrollDuration = const Duration(milliseconds: 250);
+  final Curve _scrollCurve = Curves.linear;
+  int _itemCount = 4;
 
   void _onPageChanged(int page) {
     _pageController.animateToPage(
       page,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.linear,
+      duration: _scrollDuration,
+      curve: _scrollCurve,
     );
 
     if (page == _itemCount - 1) {
@@ -26,6 +28,16 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
     }
   }
 
+  void _onVideoFinished() {
+    _pageController.nextPage(duration: _scrollDuration, curve: _scrollCurve);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
@@ -33,7 +45,8 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
       scrollDirection: Axis.vertical,
       onPageChanged: _onPageChanged,
       itemCount: _itemCount,
-      itemBuilder: (context, index) => const VideoPost(),
+      itemBuilder:
+          (context, index) => VideoPost(onVideoFinished: _onVideoFinished),
     );
   }
 }
