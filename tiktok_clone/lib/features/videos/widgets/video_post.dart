@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_clone/features/videos/widgets/video_comments.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoPost extends StatefulWidget {
   const VideoPost({super.key});
@@ -9,31 +9,29 @@ class VideoPost extends StatefulWidget {
 }
 
 class _VideoPostState extends State<VideoPost> {
-  void _onCommentsTap(BuildContext context) async {
-    // if (_videoPlayerController.value.isPlaying) {
-    //   _onTogglePause();
-    // }
+  final VideoPlayerController _videoPlayerController =
+      VideoPlayerController.asset('assets/portrait_example01.mp4');
 
-    await showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) => const VideoComments(),
-    );
+  void _initializeVideoPlayer() async {
+    await _videoPlayerController.initialize();
+    _videoPlayerController.play();
+    setState(() {});
+  }
 
-    //   _onTogglePause();
+  @override
+  void initState() {
+    super.initState();
+    _initializeVideoPlayer();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Center(
-        child: GestureDetector(
-          onTap: () => _onCommentsTap(context),
-          child: const Text('comment button'),
-        ),
-      ),
+    return Stack(
+      children: [
+        _videoPlayerController.value.isInitialized
+            ? VideoPlayer(_videoPlayerController)
+            : Positioned.fill(child: Container(color: Colors.black)),
+      ],
     );
   }
 }
