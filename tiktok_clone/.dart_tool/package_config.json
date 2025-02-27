@@ -218,6 +218,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "visibility_detector",
+      "rootUri": "file:///Users/changsungyim/.pub-cache/hosted/pub.dev/visibility_detector-0.4.0+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "vm_service",
       "rootUri": "file:///Users/changsungyim/.pub-cache/hosted/pub.dev/vm_service-14.3.1",
       "packageUri": "lib/",
@@ -236,7 +242,7 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-02-26T08:48:05.571561Z",
+  "generated": "2025-02-27T13:15:02.548248Z",
   "generator": "pub",
   "generatorVersion": "3.7.0",
   "flutterRoot": "file:///Users/changsungyim/fvm/versions/3.29.0",
