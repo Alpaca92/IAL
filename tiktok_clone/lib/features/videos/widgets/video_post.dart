@@ -89,9 +89,6 @@ class _VideoPostState extends State<VideoPost>
       upperBound: 1.5,
       value: 1.5,
     );
-    _animationController.addListener(() {
-      setState(() {});
-    });
   }
 
   @override
@@ -114,17 +111,22 @@ class _VideoPostState extends State<VideoPost>
           Positioned.fill(
             child: IgnorePointer(
               child: Center(
-                child: Transform.scale(
-                  scale: _animationController.value,
-                  child: AnimatedOpacity(
-                    opacity: isPaused ? 1 : 0,
-                    duration: _animationDuration,
-                    child: const FaIcon(
-                      FontAwesomeIcons.play,
-                      color: Colors.white,
-                      size: Sizes.size52,
-                    ),
-                  ),
+                child: AnimatedBuilder(
+                  animation: _animationController,
+                  builder: (context, child) {
+                    return Transform.scale(
+                      scale: _animationController.value,
+                      child: AnimatedOpacity(
+                        opacity: isPaused ? 1 : 0,
+                        duration: _animationDuration,
+                        child: const FaIcon(
+                          FontAwesomeIcons.play,
+                          color: Colors.white,
+                          size: Sizes.size52,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
