@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -43,8 +44,9 @@ class _VideoPostState extends State<VideoPost>
 
   void _initializeVideoPlayer() async {
     await _videoPlayerController.initialize();
-    setState(() {});
+    await _videoPlayerController.setLooping(true);
     _videoPlayerController.addListener(_onVideoChange);
+    setState(() {});
   }
 
   void _onVisibilityChanged(VisibilityInfo info) {
@@ -129,6 +131,28 @@ class _VideoPostState extends State<VideoPost>
                   },
                 ),
               ),
+            ),
+          ),
+          const Positioned(
+            left: 30,
+            bottom: 30,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '@nico',
+                  style: TextStyle(
+                    fontSize: Sizes.size20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Gaps.v10,
+                Text(
+                  'This is my house in Tailand',
+                  style: TextStyle(fontSize: Sizes.size16, color: Colors.white),
+                ),
+              ],
             ),
           ),
         ],
