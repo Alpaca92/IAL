@@ -28,7 +28,21 @@ class DiscoverScreen extends StatelessWidget {
           ),
         ),
         body: TabBarView(
-          children: [for (var tab in tabs) Center(child: Text(tab))],
+          children: [
+            GridView.builder(
+              padding: const EdgeInsets.all(Sizes.size6),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 9 / 16,
+                mainAxisSpacing: Sizes.size10,
+                crossAxisSpacing: Sizes.size10,
+              ),
+              itemBuilder:
+                  (context, index) =>
+                      Container(color: Colors.teal, child: Text('$index')),
+            ),
+            for (var tab in tabs.skip(1)) Center(child: Text(tab)),
+          ],
         ),
       ),
     );
