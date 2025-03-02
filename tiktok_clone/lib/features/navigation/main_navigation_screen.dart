@@ -14,7 +14,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1; // FIXME: 개발을 위해 임시로 1로 변경 (0 -> 1)
 
   void _onTap(int index) {
     setState(() {
