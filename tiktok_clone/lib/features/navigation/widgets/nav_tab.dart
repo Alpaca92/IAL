@@ -10,6 +10,7 @@ class NavTab extends StatelessWidget {
     required this.selectedIcon,
     required this.isSelected,
     required this.onTap,
+    required this.selectedIndex,
   });
 
   final String text;
@@ -17,6 +18,7 @@ class NavTab extends StatelessWidget {
   final IconData selectedIcon;
   final bool isSelected;
   final Function onTap;
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +27,26 @@ class NavTab extends StatelessWidget {
         behavior:
             HitTestBehavior.opaque, // NOTE: Expanded로 인한 빈공간도 이벤트 리스닝 가능하게 함
         onTap: () => onTap(),
-        child: AnimatedOpacity(
-          opacity: isSelected ? 1 : 0.6,
-          duration: const Duration(milliseconds: 300),
-          child: Column(
-            children: [
-              FaIcon(isSelected ? selectedIcon : icon, color: Colors.white),
-              Gaps.v5,
-              Text(text, style: const TextStyle(color: Colors.white)),
-            ],
+        child: Container(
+          color: selectedIndex == 0 ? Colors.black : Colors.white,
+          child: AnimatedOpacity(
+            opacity: isSelected ? 1 : 0.6,
+            duration: const Duration(milliseconds: 300),
+            child: Column(
+              children: [
+                FaIcon(
+                  isSelected ? selectedIcon : icon,
+                  color: selectedIndex == 0 ? Colors.white : Colors.black,
+                ),
+                Gaps.v5,
+                Text(
+                  text,
+                  style: TextStyle(
+                    color: selectedIndex == 0 ? Colors.white : Colors.black,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
