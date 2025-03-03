@@ -82,7 +82,8 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                           child: FadeInImage.assetNetwork(
                             fit: BoxFit.cover,
                             placeholder: 'assets/images/placeholder.jpg',
-                            image: 'https://source.unsplash.com/random/?$index',
+                            image:
+                                'https://img.freepik.com/free-photo/gradient-iphone-wallpaper-oil-bubble-water-background_53876-176849.jpg?w=360',
                           ),
                         ),
                       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/features/discover/discover_screen.dart';
+import 'package:tiktok_clone/features/inbox/inbox_screen.dart';
 import 'package:tiktok_clone/features/navigation/widgets/nav_tab.dart';
 import 'package:tiktok_clone/features/navigation/widgets/post_video_button.dart';
 import 'package:tiktok_clone/features/videos/video_timeline_screen.dart';
@@ -14,7 +15,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _selectedIndex = 1; // FIXME: 개발을 위해 임시로 1로 변경 (0 -> 1)
+  int _selectedIndex = 3; // FIXME: 개발을 위해 임시로 3로 변경 (0 -> 3)
 
   void _onTap(int index) {
     setState(() {
@@ -44,7 +45,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             child: const DiscoverScreen(),
           ),
           Offstage(offstage: _selectedIndex != 2, child: Container()),
-          Offstage(offstage: _selectedIndex != 3, child: Container()),
+          Offstage(offstage: _selectedIndex != 3, child: const InboxScreen()),
           Offstage(offstage: _selectedIndex != 4, child: Container()),
         ],
       ),
