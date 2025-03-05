@@ -22,6 +22,7 @@ class ActivityScreen extends StatefulWidget {
 class _ActivityScreenState extends State<ActivityScreen>
     with SingleTickerProviderStateMixin {
   final List<String> _notifications = List.generate(20, (index) => '${index}h');
+  bool showBarrier = false;
   late final AnimationController _animationController = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 300),
@@ -34,9 +35,24 @@ class _ActivityScreenState extends State<ActivityScreen>
     begin: const Offset(0, -1),
     end: Offset.zero,
   ).animate(_animationController);
+  late final Animation<Color?> _barrierAnimation = ColorTween(
+    begin: Colors.transparent,
+    end: Colors.black38,
+  ).animate(_animationController);
 
-  void _onTitleTap() {
-    _animationController.toggle();
+  void _toggleAnimation() async {
+    final AnimationController(:isCompleted, :reverse, :forward) =
+        _animationController;
+
+    if (isCompleted) {
+      await reverse();
+    } else {
+      forward();
+    }
+
+    setState(() {
+      showBarrier = !showBarrier;
+    });
   }
 
   void _onDismissed(String notification) {
@@ -57,7 +73,7 @@ class _ActivityScreenState extends State<ActivityScreen>
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: GestureDetector(
-          onTap: _onTitleTap,
+          onTap: _toggleAnimation,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -167,6 +183,12 @@ class _ActivityScreenState extends State<ActivityScreen>
                 ),
             ],
           ),
+          if (showBarrier)
+            AnimatedModalBarrier(
+              color: _barrierAnimation,
+              dismissible: true,
+              onDismiss: _toggleAnimation,
+            ),
           SlideTransition(
             position: _panelAnimation,
             child: Container(
