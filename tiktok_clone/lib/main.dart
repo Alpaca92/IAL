@@ -27,7 +27,7 @@ class TikTokApp extends StatelessWidget {
         ),
         appBarTheme: const AppBarTheme(
           foregroundColor: Colors.black,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           elevation: 0,
           scrolledUnderElevation:
               0, // NOTE: when the app bar is scrolled under, it will not have an elevation
