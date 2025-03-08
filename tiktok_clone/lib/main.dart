@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
-import 'package:tiktok_clone/features/inbox/chats_screen.dart';
+import 'package:tiktok_clone/features/inbox/chat_detail_screen.dart';
 
 void main() {
   runApp(const TikTokApp());
@@ -40,7 +40,7 @@ class TikTokApp extends StatelessWidget {
         ),
       ),
       home:
-          const ChatsScreen(), // FIXME: 테스트 중으로 "const SignUpScreen()"으로 돌려놔야 함
+          const ChatDetailScreen(), // FIXME: 테스트 중으로 "const SignUpScreen()"으로 돌려놔야 함
     );
   }
 }
